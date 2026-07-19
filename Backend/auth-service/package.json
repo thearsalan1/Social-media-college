@@ -1,0 +1,43 @@
+{
+  "name": "auth-service",
+  "version": "1.0.0",
+  "description": "Auth Service for CampusConnect - handles signup, OTP verification, login, JWT",
+  "main": "index.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon --watch . --ext ts --exec \"node --loader ts-node/esm index.ts\"",
+    "start": "node --loader ts-node/esm index.ts",
+    "build": "tsc",
+    "worker": "node --loader ts-node/esm src/workers/email.worker.ts"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^1.1.0",
+    "@prisma/adapter-neon": "^7.8.0",
+    "@prisma/adapter-pg": "^7.8.0",
+    "@prisma/client": "^7.8.0",
+    "bcryptjs": "^2.4.3",
+    "bullmq": "^5.12.0",
+    "cloudinary": "^2.5.1",
+    "cors": "^2.8.5",
+    "csv-parser": "^3.0.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.4.0",
+    "helmet": "^7.1.0",
+    "ioredis": "^5.4.1",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.1",
+    "pg": "^8.22.0",
+    "sib-api-v3-sdk": "^8.5.0",
+    "winston": "^3.14.2",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "nodemon": "^3.1.4",
+    "prisma": "^7.8.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
+  }
+}

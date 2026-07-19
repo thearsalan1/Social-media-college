@@ -1,0 +1,55 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+enum Role {
+  STUDENT
+  ADMIN
+}
+
+model StudentRoster {
+  id            String   @id @default(uuid())
+  collegeId     String   @unique
+  officialEmail String
+  studentName   String
+  branch        String
+  isRegistered  Boolean  @default(false)
+  createdAt     DateTime @default(now())
+
+  @@map("student_roster")
+}
+
+model User {
+  id             String   @id @default(uuid())
+  name           String
+  email          String   @unique
+  password       String
+  CollegeId      String   @unique
+  role           Role     @default(STUDENT)
+  branch         String
+  bio            String?  @db.VarChar(250)
+  profilePicture String?
+  isVerified     Boolean  @default(false)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @default(now())
+  otps           Otp[]
+
+  @@map("users")
+}
+
+model Otp {
+  id        String   @id @default(uuid())
+  code      String
+  userId    String
+  expireAt  DateTime
+  isUsed    Boolean  @default(false)
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("otps")
+}
+
