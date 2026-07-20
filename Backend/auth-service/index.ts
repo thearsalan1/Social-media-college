@@ -6,6 +6,7 @@ import { connection } from "./src/config/redis.js";
 import { emailWorker } from "./src/worker/email.worker.js";
 import cookieParser from "cookie-parser";
 import rosterRoutes from "./src/routes/roster.route.js";
+import authRoutes from "./src/routes/auth.routes.js";
 
 const app = express();
 app.use(cors());
@@ -17,6 +18,7 @@ app.use("/health", (req: Request, res: Response) => {
 });
 
 app.use("/auth", rosterRoutes);
+app.use("/auth", authRoutes);
 
 connection;
 emailWorker;
