@@ -6,6 +6,7 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
 enum Role {
   STUDENT
   ADMIN
@@ -28,7 +29,7 @@ model User {
   name           String
   email          String   @unique
   password       String
-  CollegeId      String   @unique
+  collegeId      String   @unique
   role           Role     @default(STUDENT)
   branch         String
   bio            String?  @db.VarChar(250)
@@ -45,11 +46,10 @@ model Otp {
   id        String   @id @default(uuid())
   code      String
   userId    String
-  expireAt  DateTime
+  expiresAt DateTime
   isUsed    Boolean  @default(false)
   createdAt DateTime @default(now())
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("otps")
 }
-

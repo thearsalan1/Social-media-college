@@ -1,16 +1,25 @@
 import dotenv from "dotenv";
 dotenv.config();
-import express from "express";
+import express, { Request, Response } from "express";
 import cors from "cors";
 import { connection } from "./src/config/redis.js";
 import { emailWorker } from "./src/worker/email.worker.js";
+import cookieParser from "cookie-parser";
+import rosterRoutes from "./src/routes/roster.route.js";
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(cookieParser());
+
+app.use("/health", (req: Request, res: Response) => {
+  res.status(200).json({ success: false, message: "auth-service is running " });
+});
+
+app.use("/auth", rosterRoutes);
+
 connection;
 emailWorker;
-
 const PORT = process.env.PORT || 5001;
 
 app.listen(PORT, () => {
