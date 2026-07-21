@@ -1,5 +1,5 @@
 import { prisma } from "../db/prisma.js";
-import { signupInput } from "./../validator/auth.validator.js";
+import { loginInput, signupInput } from "./../validator/auth.validator.js";
 import { Request, Response } from "express";
 import bcrypt from "bcryptjs";
 import {
@@ -122,18 +122,7 @@ export const verifyOtp = async (req: Request, res: Response) => {
         message: "OTP not found.",
       });
     }
-    if (otpRecord.expiresAt < new Date()) {
-      return res.status(400).json({
-        success: false,
-        message: "OTP expired.",
-      });
-    }
-    if (otpRecord.isUsed) {
-      return res.status(400).json({
-        success: false,
-        message: "Otp already used ",
-      });
-    }
+
     if (otpRecord.attempts >= 5) {
       return res.status(429).json({
         success: false,
@@ -208,5 +197,51 @@ export const verifyOtp = async (req: Request, res: Response) => {
     });
 
     res.status(200).json({ success: true, message: "OTP Verified" });
+  } catch (error) {
+    console.error("Verification error:", error);
+    return res
+      .status(500)
+      .json({ success: false, message: "Verification failed" });
+  }
+};
+
+export const login = async (req: Request, res: Response) => {
+  try {
+    const { collegeId, password }: loginInput = req.body;
+    const ip = req.ip || req.socket.remoteAddress || "unknown";
+    const user = await prisma.user.findUnique({
+      where: {
+        collegeId,
+      },
+    });
+    const isLocked = await redis.exists(`login_lock:${ip}`);
+    if (isLocked) {
+      const ttl = await redis.ttl(`login_lock:${ip}`);
+      return res.status(429).json({
+        success: false,
+        message: "Too many failed login attempts. Try again later.",
+        retryAfter: ttl,
+      });
+    }
+    let attempts = 0;
+    const isMatch = await bcrypt.compare(password, user?.password!);
+    if (!isMatch) {
+      attempts = await redis.incr(`login_attempt:${ip}`);
+      if (attempts === 1) {
+        await redis.expire(`login_attempts:${ip}`, 15 * 60);
+      }
+      return res
+        .status(404)
+        .json({ success: false, message: "Invalid Credentials" });
+    }
+    if (attempts >= 5) {
+      await redis.set(`login_lock:${ip}`, "locked", "EX", 15 * 60);
+      await redis.del(`login_attempts:${ip}`);
+
+      return res.status(429).json({
+        success: false,
+        message: "Too many failed login attempts. Try again after 15 minutes.",
+      });
+    }
   } catch (error) {}
 };

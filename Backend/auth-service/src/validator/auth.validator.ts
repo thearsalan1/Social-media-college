@@ -11,5 +11,11 @@ const otpSchema = z.object({
   otp: z.string().length(6, "OTP must be 6 characters"),
 });
 
+const loginSchema = z.object({
+  collegeId: z.string().min(1, "College Id must be greater than 1 characters"),
+  password: z.string().min(8, "Password must be greater than 8 characters"),
+});
+
 export type signupInput = z.infer<typeof signupSchema>;
 export type otpInput = z.infer<typeof otpSchema>;
+export type loginInput = z.infer<typeof loginSchema>;
