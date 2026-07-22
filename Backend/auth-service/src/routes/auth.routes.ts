@@ -1,8 +1,17 @@
 import { Router } from "express";
-import { signup, verifyOtp } from "../controllers/auth.controller.js";
+import {
+  forgetPassword,
+  login,
+  logOut,
+  refreshAccessToken,
+  resetPassword,
+  signup,
+  verifyOtp,
+} from "../controllers/auth.controller.js";
 import { createRateLimiter } from "../middleware/rateLimiter.js";
 import { validate } from "../middleware/validate.js";
 import { otpSchema, signupSchema } from "../validator/auth.validator.js";
+import { authMiddleware } from "../middleware/auth.middleware.js";
 
 const router = Router();
 
@@ -17,6 +26,35 @@ router.post(
   createRateLimiter({ windowInSeconds: 10 * 60, maxRequests: 5 }),
   validate(otpSchema),
   verifyOtp,
+);
+router.post(
+  "/login",
+  createRateLimiter({ windowInSeconds: 15 * 60, maxRequests: 5 }),
+  login,
+);
+
+router.post(
+  "/refresh-token",
+  createRateLimiter({ windowInSeconds: 60 * 60, maxRequests: 10 }),
+  refreshAccessToken,
+);
+
+router.post(
+  "/forgot-password",
+  createRateLimiter({ windowInSeconds: 60 * 60, maxRequests: 3 }),
+  forgetPassword,
+);
+
+router.post(
+  "/reset-password",
+  createRateLimiter({ windowInSeconds: 60 * 60, maxRequests: 3 }),
+  resetPassword,
+);
+router.get(
+  "/logout",
+  authMiddleware,
+  createRateLimiter({ windowInSeconds: 60 * 60, maxRequests: 3 }),
+  logOut,
 );
 
 export default router;

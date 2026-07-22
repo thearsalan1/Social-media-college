@@ -6,6 +6,7 @@ import {
   generateAccessToken,
   generateOtp,
   generateRefreshToken,
+  verifyToken,
 } from "../utils/jwt.js";
 import { emailQueue } from "../queue/email.queue.js";
 import { maskedEmail } from "../utils/maskedEmail.js";
@@ -229,24 +230,25 @@ export const login = async (req: Request, res: Response) => {
         retryAfter: ttl,
       });
     }
-    let attempts = 0;
-    const isMatch = await bcrypt.compare(password, user?.password!);
-    if (!isMatch) {
-      attempts = await redis.incr(`login_attempt:${ip}`);
-      if (attempts === 1) {
-        await redis.expire(`login_attempts:${ip}`, 15 * 60);
-      }
-      return res
-        .status(404)
-        .json({ success: false, message: "Invalid Credentials" });
-    }
+    let attempt = 0;
     if (!user.isVerified) {
       return res.status(400).json({
         success: false,
         message: "User is not verified. Verify your email.",
       });
     }
-    if (attempts >= 5) {
+    const isMatch = await bcrypt.compare(password, user?.password!);
+    if (!isMatch) {
+      attempt = await redis.incr(`login_attempts:${ip}`);
+      if (attempt === 1) {
+        await redis.expire(`login_attempts:${ip}`, 15 * 60);
+      }
+      return res
+        .status(404)
+        .json({ success: false, message: "Invalid Credentials" });
+    }
+
+    if (attempt >= 5) {
       await redis.set(`login_lock:${ip}`, "locked", "EX", 15 * 60);
       await redis.del(`login_attempts:${ip}`);
 
@@ -286,8 +288,291 @@ export const login = async (req: Request, res: Response) => {
       secure: process.env.NODE_ENV === "production",
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
+    return res.status(200).json({
+      success: true,
+      message: "Login successful",
+      user: {
+        userId: user.id,
+        name: user.name,
+        role: user.role,
+        collegeId: user.collegeId,
+        branch: user.branch,
+      },
+    });
   } catch (error) {
     console.log("Login error", error);
+    res
+      .status(500)
+      .json({ success: false, message: "Internal server error", error: error });
+  }
+};
+
+export const refreshAccessToken = async (req: Request, res: Response) => {
+  try {
+    const oldRefreshToken = req.cookies?.refreshToken;
+
+    if (!oldRefreshToken) {
+      return res
+        .status(401)
+        .json({ success: false, message: "Refresh token missing" });
+    }
+
+    let decoded;
+    try {
+      decoded = verifyToken(oldRefreshToken);
+    } catch (err) {
+      return res
+        .status(401)
+        .json({ success: false, message: "Invalid or expired refresh token" });
+    }
+
+    const { userId, jti } = decoded as any;
+
+    const storedToken = await redis.get(`refresh:${userId}:${jti}`);
+
+    if (!storedToken || storedToken !== oldRefreshToken) {
+      return res.status(401).json({
+        success: false,
+        message: "Refresh token not recognized. Please login again.",
+      });
+    }
+
+    const user = await prisma.user.findUnique({ where: { id: userId } });
+
+    if (!user) {
+      return res
+        .status(401)
+        .json({ success: false, message: "User not found" });
+    }
+
+    await redis.del(`refresh:${userId}:${jti}`);
+
+    const newAccessToken = generateAccessToken({
+      userId: user.id,
+      collegeId: user.collegeId,
+      branch: user.branch,
+      role: user.role,
+    });
+
+    const { token: newRefreshToken, jti: newJti } = generateRefreshToken({
+      userId: user.id,
+      collegeId: user.collegeId,
+      branch: user.branch,
+      role: user.role,
+    });
+
+    await redis.set(
+      `refresh:${user.id}:${newJti}`,
+      newRefreshToken,
+      "EX",
+      process.env.JWT_REFRESH_TOKEN_IN as string,
+    );
+
+    res.cookie("accessToken", newAccessToken, {
+      httpOnly: true,
+      sameSite: "strict",
+      secure: process.env.NODE_ENV === "production",
+      maxAge: 15 * 60 * 1000,
+    });
+
+    res.cookie("refreshToken", newRefreshToken, {
+      httpOnly: true,
+      sameSite: "strict",
+      secure: process.env.NODE_ENV === "production",
+      maxAge: 7 * 24 * 60 * 60 * 1000,
+    });
+
+    return res.status(200).json({ success: true, message: "Token refreshed" });
+  } catch (error) {
+    console.error("Refresh token error:", error);
+    return res
+      .status(500)
+      .json({ success: false, message: "Failed to refresh token" });
+  }
+};
+
+export const forgetPassword = async (req: Request, res: Response) => {
+  try {
+    const { collegeId } = req.body;
+    if (!collegeId) {
+      return res
+        .status(404)
+        .json({ success: false, message: "college Id required" });
+    }
+    const user = await prisma.user.findUnique({
+      where: {
+        collegeId,
+      },
+    });
+
+    if (!user) {
+      return res
+        .status(404)
+        .json({ success: false, message: "User not found " });
+    }
+    const roster = await prisma.studentRoster.findUnique({
+      where: {
+        collegeId,
+      },
+    });
+    if (!roster) {
+      return res.status(404).json({
+        success: false,
+        message:
+          "Invalid collegeId, If it is correct than contact your college",
+      });
+    }
+    const otp = generateOtp();
+    const hashedOtp = await bcrypt.hash(otp, process.env.JWT_SALT!);
+    const expiresAt = new Date(
+      Date.now() + Number(process.env.OTP_EXPIRY_MINUTES || 10) * 60 * 1000,
+    );
+    await prisma.otp.create({
+      data: {
+        code: hashedOtp,
+        userId: user.id,
+        expiresAt,
+      },
+    });
+    await emailQueue.add("forget-password-email", {
+      email: roster.officialEmail,
+      name: user.name,
+      otp: otp,
+    });
+
+    return res.status(201).json({
+      success: true,
+      message: "Forgot password. OTP sent to your college email.",
+      maskedEmail: maskedEmail(roster.officialEmail),
+    });
+  } catch (error) {
+    console.error(error);
+    res
+      .status(500)
+      .json({ success: false, message: "Internal server error", error: error });
+  }
+};
+
+export const resetPassword = async (req: Request, res: Response) => {
+  const { newPassword, collegeId } = req.body;
+  try {
+    if (!newPassword || newPassword.length < 8) {
+      return res.status(400).json({
+        success: false,
+        message: "Password must be at least 8 characters long",
+      });
+    }
+
+    if (!collegeId) {
+      return res.status(400).json({
+        success: false,
+        message: "College ID is required",
+      });
+    }
+
+    const user = await prisma.user.findUnique({ where: { collegeId } });
+    if (!user) {
+      return res.status(400).json({
+        success: false,
+        message: "User not found",
+      });
+    }
+
+    const saltRounds = parseInt(process.env.BCRYPT_SALT_ROUNDS || "10", 10);
+    const hashedPassword = await bcrypt.hash(newPassword, saltRounds);
+
+    await prisma.user.update({
+      where: { collegeId },
+      data: { password: hashedPassword, updatedAt: new Date() },
+    });
+
+    res.status(200).json({
+      success: true,
+      message: "Password reset successfully. Please login.",
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      success: false,
+      message: "Internal server error",
+    });
+  }
+};
+
+export const logOut = async (req: Request, res: Response) => {
+  try {
+    res.clearCookie("accessToken", {
+      httpOnly: true,
+      secure: true,
+      sameSite: "strict",
+    });
+    res.clearCookie("refreshToken", {
+      httpOnly: true,
+      secure: true,
+      sameSite: "strict",
+    });
+    res.status(200).json({
+      success: true,
+      message: "Logged out successfully.",
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      success: false,
+      message: "Internal server error",
+    });
+  }
+};
+
+export const resendOtp = async (req: Request, res: Response) => {
+  const { collegeId } = req.body;
+  try {
+    const user = await prisma.user.findUnique({
+      where: {
+        collegeId,
+      },
+    });
+    const roster = await prisma.studentRoster.findUnique({
+      where: {
+        collegeId,
+      },
+    });
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found try to register first",
+      });
+    }
+    const otp = generateOtp();
+    const hashedOtp = await bcrypt.hash(otp, process.env.JWT_SALT!);
+    const expiresAt = new Date(Date.now() + 5 * 60 * 1000);
+
+    await prisma.otp.upsert({
+      where: { userId
+        : user.id },
+      update: {
+        code: hashedOtp,
+        expiresAt,
+        isUsed: false,
+        attempts: 0,
+        createdAt: new Date(),
+      },
+      create: {
+        userId: user.id,
+        code: hashedOtp,
+        expiresAt,
+      },
+    });
+    await emailQueue.add("resend-forget-password-email", {
+      email: roster?.officialEmail,
+      name: roster?.studentName,
+      otp,
+    });
+    res
+      .status(200)
+      .json({ success: true, message: "Otp resended to your college Email" });
+  } catch (error) {
+    console.log(error);
     res
       .status(500)
       .json({ success: false, message: "Internal server error", error: error });

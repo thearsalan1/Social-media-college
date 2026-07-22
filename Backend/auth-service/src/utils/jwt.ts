@@ -1,5 +1,7 @@
 import { randomUUID } from "crypto";
-import jwt from "jsonwebtoken";
+import jwt, { SignOptions } from "jsonwebtoken";
+import ms from "ms"; // optional if you want to validate
+
 interface TokenPayload {
   userId: string;
   role: string;
@@ -8,33 +10,30 @@ interface TokenPayload {
 }
 
 export function generateAccessToken(payload: TokenPayload): string {
-  return jwt.sign(payload, process.env.JWT_SECRET as string, {
-    expiresIn: process.env.JWT_ACCESS_EXPIRES_IN || "15m",
-  });
+  const secret = process.env.JWT_SECRET;
+  if (!secret) throw new Error("JWT_SECRET not defined");
+
+  const expiresIn: SignOptions["expiresIn"] =
+    (process.env.JWT_ACCESS_EXPIRES_IN as ms.StringValue) || "15m";
+
+  return jwt.sign(payload, secret, { expiresIn });
 }
 
 export const generateRefreshToken = (payload: TokenPayload) => {
   const jti = randomUUID();
+  const secret = process.env.REFRESH_TOKEN_SECRET;
+  if (!secret) throw new Error("REFRESH_TOKEN_SECRET not defined");
 
-  const token = jwt.sign(
-    {
-      ...payload,
-      jti,
-    },
-    process.env.REFRESH_TOKEN_SECRET!,
-    {
-      expiresIn: "7d",
-    },
-  );
+  const expiresIn: SignOptions["expiresIn"] = "7d";
 
-  return {
-    token,
-    jti,
-  };
+  const token = jwt.sign({ ...payload, jti }, secret, { expiresIn });
+  return { token, jti };
 };
 
 export function verifyToken(token: string): TokenPayload {
-  return jwt.verify(token, process.env.JWT_SECRET as string) as TokenPayload;
+  const secret = process.env.JWT_SECRET;
+  if (!secret) throw new Error("JWT_SECRET not defined");
+  return jwt.verify(token, secret) as TokenPayload;
 }
 
 export function generateOtp() {
