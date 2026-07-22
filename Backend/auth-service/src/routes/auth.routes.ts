@@ -4,6 +4,7 @@ import {
   login,
   logOut,
   refreshAccessToken,
+  resendOtp,
   resetPassword,
   signup,
   verifyOtp,
@@ -32,19 +33,16 @@ router.post(
   createRateLimiter({ windowInSeconds: 15 * 60, maxRequests: 5 }),
   login,
 );
-
 router.post(
   "/refresh-token",
   createRateLimiter({ windowInSeconds: 60 * 60, maxRequests: 10 }),
   refreshAccessToken,
 );
-
 router.post(
   "/forgot-password",
   createRateLimiter({ windowInSeconds: 60 * 60, maxRequests: 3 }),
   forgetPassword,
 );
-
 router.post(
   "/reset-password",
   createRateLimiter({ windowInSeconds: 60 * 60, maxRequests: 3 }),
@@ -55,6 +53,11 @@ router.get(
   authMiddleware,
   createRateLimiter({ windowInSeconds: 60 * 60, maxRequests: 3 }),
   logOut,
+);
+router.get(
+  "/resend-otp",
+  createRateLimiter({ windowInSeconds: 60 * 60, maxRequests: 3 }),
+  resendOtp,
 );
 
 export default router;
