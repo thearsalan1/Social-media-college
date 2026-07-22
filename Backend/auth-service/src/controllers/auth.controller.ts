@@ -47,7 +47,7 @@ export const signup = async (req: Request, res: Response) => {
         collegeId: roster.collegeId,
         email: roster.officialEmail,
         password: hashedPassword,
-        branch: roster.collegeId,
+        branch: roster.branch,
         isVerified: false,
       },
     });
@@ -201,7 +201,7 @@ export const verifyOtp = async (req: Request, res: Response) => {
     console.error("Verification error:", error);
     return res
       .status(500)
-      .json({ success: false, message: "Verification failed" });
+      .json({ success: false, message: "Verification failed", error: error });
   }
 };
 
@@ -214,6 +214,12 @@ export const login = async (req: Request, res: Response) => {
         collegeId,
       },
     });
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found. Register user first.",
+      });
+    }
     const isLocked = await redis.exists(`login_lock:${ip}`);
     if (isLocked) {
       const ttl = await redis.ttl(`login_lock:${ip}`);
@@ -234,6 +240,12 @@ export const login = async (req: Request, res: Response) => {
         .status(404)
         .json({ success: false, message: "Invalid Credentials" });
     }
+    if (!user.isVerified) {
+      return res.status(400).json({
+        success: false,
+        message: "User is not verified. Verify your email.",
+      });
+    }
     if (attempts >= 5) {
       await redis.set(`login_lock:${ip}`, "locked", "EX", 15 * 60);
       await redis.del(`login_attempts:${ip}`);
@@ -243,5 +255,41 @@ export const login = async (req: Request, res: Response) => {
         message: "Too many failed login attempts. Try again after 15 minutes.",
       });
     }
-  } catch (error) {}
+    const accessToken = generateAccessToken({
+      userId: user.id,
+      collegeId: user.collegeId,
+      branch: user.branch,
+      role: user.role,
+    });
+    const { token: refreshToken, jti } = generateRefreshToken({
+      userId: user.id,
+      collegeId: user.collegeId,
+      branch: user.branch,
+      role: user.role,
+    });
+
+    await redis.set(
+      `refresh:${user.id}:${jti}`,
+      refreshToken,
+      "EX",
+      process.env.JWT_REFRESH_TOKEN_IN,
+    );
+    res.cookie("accessToken", accessToken, {
+      httpOnly: true,
+      sameSite: "strict",
+      secure: process.env.NODE_ENV === "production",
+      maxAge: 15 * 60,
+    });
+    res.cookie("refreshToken", refreshToken, {
+      httpOnly: true,
+      sameSite: "strict",
+      secure: process.env.NODE_ENV === "production",
+      maxAge: 7 * 24 * 60 * 60 * 1000,
+    });
+  } catch (error) {
+    console.log("Login error", error);
+    res
+      .status(500)
+      .json({ success: false, message: "Internal server error", error: error });
+  }
 };
