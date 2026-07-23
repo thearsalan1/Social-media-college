@@ -15,7 +15,7 @@ export const emailWorker = new Worker(
         break;
       case "resend-forget-password-email":
         console.log("Resending reset password otp on email: ", job.data.email);
-
+        break;
       default:
         throw new Error(`Unknown job: ${job.name}`);
     }

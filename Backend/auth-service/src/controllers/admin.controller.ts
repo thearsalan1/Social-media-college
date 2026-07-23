@@ -54,3 +54,31 @@ export const uploadRoaster = async (req: Request, res: Response) => {
       .json({ success: false, message: "Roster upload failed" });
   }
 };
+
+export const filterBranch = async (req: Request, res: Response) => {
+  const { branch } = req.body;
+  try {
+    if (!branch) {
+      return res
+        .status(400)
+        .json({ success: false, message: "Need branch for searching" });
+    }
+    const users = await prisma.user.findMany({
+      where: {
+        branch: branch,
+      },
+    });
+    if (users.length === 0) {
+      return res
+        .status(404)
+        .json({ success: false, message: "Users not found" });
+    }
+    const filteredUsers = users.map(({ password, role, ...user }) => user);
+    return res.status(200).json({ success: true, users: filteredUsers });
+  } catch (error) {
+    console.log(error);
+    return res
+      .status(500)
+      .json({ success: false, message: "Unable to filter users by branch" });
+  }
+};

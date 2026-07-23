@@ -11,7 +11,11 @@ import {
 } from "../controllers/auth.controller.js";
 import { createRateLimiter } from "../middleware/rateLimiter.js";
 import { validate } from "../middleware/validate.js";
-import { otpSchema, signupSchema } from "../validator/auth.validator.js";
+import {
+  loginSchema,
+  otpSchema,
+  signupSchema,
+} from "../validator/auth.validator.js";
 import { authMiddleware } from "../middleware/auth.middleware.js";
 
 const router = Router();
@@ -31,6 +35,7 @@ router.post(
 router.post(
   "/login",
   createRateLimiter({ windowInSeconds: 15 * 60, maxRequests: 5 }),
+  validate(loginSchema),
   login,
 );
 router.post(
@@ -48,13 +53,13 @@ router.post(
   createRateLimiter({ windowInSeconds: 60 * 60, maxRequests: 3 }),
   resetPassword,
 );
-router.get(
+router.post(
   "/logout",
   authMiddleware,
   createRateLimiter({ windowInSeconds: 60 * 60, maxRequests: 3 }),
   logOut,
 );
-router.get(
+router.post(
   "/resend-otp",
   createRateLimiter({ windowInSeconds: 60 * 60, maxRequests: 3 }),
   resendOtp,

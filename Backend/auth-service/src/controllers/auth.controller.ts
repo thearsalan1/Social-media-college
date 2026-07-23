@@ -6,7 +6,7 @@ import {
   generateAccessToken,
   generateOtp,
   generateRefreshToken,
-  verifyToken,
+  verifyRefreshToken,
 } from "../utils/jwt.js";
 import { emailQueue } from "../queue/email.queue.js";
 import { maskedEmail } from "../utils/maskedEmail.js";
@@ -40,7 +40,8 @@ export const signup = async (req: Request, res: Response) => {
         message: "Students email not found.",
       });
     }
-    const hashedPassword = await bcrypt.hash(password, process.env.JWT_SALT!);
+    const saltRounds = parseInt(process.env.BCRYPT_SALT_ROUNDS || "10", 10);
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
 
     const newUser = await prisma.user.create({
       data: {
@@ -63,7 +64,7 @@ export const signup = async (req: Request, res: Response) => {
     });
 
     const otp = generateOtp();
-    const hashedOtp = await bcrypt.hash(otp, process.env.JWT_SALT!);
+    const hashedOtp = await bcrypt.hash(otp, saltRounds);
     const expiresAt = new Date(
       Date.now() + Number(process.env.OTP_EXPIRY_MINUTES || 10) * 60 * 1000,
     );
@@ -189,12 +190,17 @@ export const verifyOtp = async (req: Request, res: Response) => {
       "EX",
       process.env.JWT_REFRESH_TOKEN_IN,
     );
-    res.cookie("accessToken", accessToken);
+    res.cookie("accessToken", accessToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+      maxAge: parseInt(process.env.JWT_ACCESS_EXPIRES_IN!),
+    });
     res.cookie("refreshToken", refreshToken, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: "strict",
-      maxAge: 7 * 24 * 60 * 60 * 1000,
+      maxAge: parseInt(process.env.JWT_REFRESH_TOKEN_IN!),
     });
 
     res.status(200).json({ success: true, message: "OTP Verified" });
@@ -243,20 +249,21 @@ export const login = async (req: Request, res: Response) => {
       if (attempt === 1) {
         await redis.expire(`login_attempts:${ip}`, 15 * 60);
       }
+      if (attempt >= 5) {
+        await redis.set(`login_lock:${ip}`, "locked", "EX", 15 * 60);
+        await redis.del(`login_attempts:${ip}`);
+
+        return res.status(429).json({
+          success: false,
+          message:
+            "Too many failed login attempts. Try again after 15 minutes.",
+        });
+      }
       return res
         .status(404)
         .json({ success: false, message: "Invalid Credentials" });
     }
 
-    if (attempt >= 5) {
-      await redis.set(`login_lock:${ip}`, "locked", "EX", 15 * 60);
-      await redis.del(`login_attempts:${ip}`);
-
-      return res.status(429).json({
-        success: false,
-        message: "Too many failed login attempts. Try again after 15 minutes.",
-      });
-    }
     const accessToken = generateAccessToken({
       userId: user.id,
       collegeId: user.collegeId,
@@ -317,14 +324,7 @@ export const refreshAccessToken = async (req: Request, res: Response) => {
         .json({ success: false, message: "Refresh token missing" });
     }
 
-    let decoded;
-    try {
-      decoded = verifyToken(oldRefreshToken);
-    } catch (err) {
-      return res
-        .status(401)
-        .json({ success: false, message: "Invalid or expired refresh token" });
-    }
+    const decoded = verifyRefreshToken(oldRefreshToken);
 
     const { userId, jti } = decoded as any;
 
@@ -423,7 +423,8 @@ export const forgetPassword = async (req: Request, res: Response) => {
       });
     }
     const otp = generateOtp();
-    const hashedOtp = await bcrypt.hash(otp, process.env.JWT_SALT!);
+    const saltRounds = parseInt(process.env.BCRYPT_SALT_ROUNDS || "10", 10);
+    const hashedOtp = await bcrypt.hash(otp, saltRounds);
     const expiresAt = new Date(
       Date.now() + Number(process.env.OTP_EXPIRY_MINUTES || 10) * 60 * 1000,
     );
@@ -454,7 +455,7 @@ export const forgetPassword = async (req: Request, res: Response) => {
 };
 
 export const resetPassword = async (req: Request, res: Response) => {
-  const { newPassword, collegeId } = req.body;
+  const { newPassword, collegeId, otp } = req.body;
   try {
     if (!newPassword || newPassword.length < 8) {
       return res.status(400).json({
@@ -478,6 +479,26 @@ export const resetPassword = async (req: Request, res: Response) => {
       });
     }
 
+    const otpRecord = await prisma.otp.findFirst({
+      where: { userId: user.id, isUsed: false, expiresAt: { gt: new Date() } },
+      orderBy: { createdAt: "desc" },
+    });
+    if (!otpRecord) {
+      return res.status(400).json({
+        success: false,
+        message: "OTP expired or not found. Request again.",
+      });
+    }
+
+    const isOtpValid = await bcrypt.compare(otp, otpRecord.code);
+    if (!isOtpValid) {
+      return res.status(400).json({ success: false, message: "Invalid OTP" });
+    }
+
+    await prisma.otp.update({
+      where: { id: otpRecord.id },
+      data: { isUsed: true },
+    });
     const saltRounds = parseInt(process.env.BCRYPT_SALT_ROUNDS || "10", 10);
     const hashedPassword = await bcrypt.hash(newPassword, saltRounds);
 
@@ -543,13 +564,13 @@ export const resendOtp = async (req: Request, res: Response) => {
         message: "User not found try to register first",
       });
     }
+    const saltRounds = parseInt(process.env.BCRYPT_SALT_ROUNDS || "10", 10);
     const otp = generateOtp();
-    const hashedOtp = await bcrypt.hash(otp, process.env.JWT_SALT!);
+    const hashedOtp = await bcrypt.hash(otp, saltRounds);
     const expiresAt = new Date(Date.now() + 5 * 60 * 1000);
 
     await prisma.otp.upsert({
-      where: { userId
-        : user.id },
+      where: { userId: user.id },
       update: {
         code: hashedOtp,
         expiresAt,

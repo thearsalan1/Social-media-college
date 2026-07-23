@@ -40,3 +40,9 @@ export function generateOtp() {
   const otp = Math.floor(Math.random() * 900000 + 100000);
   return otp.toString();
 }
+
+export function verifyRefreshToken(token: string): TokenPayload & { jti: string } {
+  const secret = process.env.REFRESH_TOKEN_SECRET;
+  if (!secret) throw new Error("REFRESH_TOKEN_SECRET not defined");
+  return jwt.verify(token, secret) as TokenPayload & { jti: string };
+}

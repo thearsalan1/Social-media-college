@@ -112,3 +112,34 @@ export const getUserById = async (req: Request, res: Response) => {
     });
   }
 };
+
+export const searchStudent = async (req: Request, res: Response) => {
+  const { collegeId } = req.query;
+  const id = collegeId?.toString();
+  try {
+    if (!collegeId) {
+      return res
+        .status(400)
+        .json({ success: false, message: "Enter college id" });
+    }
+    const user = await prisma.user.findUnique({
+      where: {
+        collegeId: id,
+      },
+    });
+    if (!user) {
+      return res
+        .status(404)
+        .json({ success: false, message: "User not found" });
+    }
+    const { password, role, ...safeUser } = user;
+    return res
+      .status(200)
+      .json({ success: true, message: "User found", data: safeUser });
+  } catch (error) {
+    console.log(error);
+    res
+      .status(500)
+      .json({ success: false, message: "Internal server error", err: error });
+  }
+};
