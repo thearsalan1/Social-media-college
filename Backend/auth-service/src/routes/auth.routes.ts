@@ -34,7 +34,7 @@ router.post(
 );
 router.post(
   "/login",
-  createRateLimiter({ windowInSeconds: 15 * 60, maxRequests: 5 }),
+  createRateLimiter({ windowInSeconds: 15 * 60, maxRequests: 10 }),
   validate(loginSchema),
   login,
 );
@@ -61,7 +61,7 @@ router.post(
 );
 router.post(
   "/resend-otp",
-  createRateLimiter({ windowInSeconds: 60 * 60, maxRequests: 3 }),
+  createRateLimiter({ windowInSeconds: 60 * 60, maxRequests: 10 }),
   resendOtp,
 );
 

@@ -10,6 +10,6 @@
     "outDir": "dist",
     "rootDir": "./"
   },
-  "include": ["./**/*.ts", "test.csv"],
+  "include": ["./**/*.ts", "test.csv","src","types"],
   "exclude": ["node_modules", "dist"]
 }

@@ -11,6 +11,7 @@ import {
 import { emailQueue } from "../queue/email.queue.js";
 import { maskedEmail } from "../utils/maskedEmail.js";
 import { connection as redis } from "../config/redis.js";
+import { logger } from "../config/logger.js";
 
 export const signup = async (req: Request, res: Response) => {
   try {
@@ -81,13 +82,14 @@ export const signup = async (req: Request, res: Response) => {
       name: newUser.name,
       otp: otp,
     });
+    logger.info("User signup successful", { collegeId });
     return res.status(201).json({
       success: true,
       message: "Account created. OTP sent to your college email.",
       maskedEmail: maskedEmail(roster.officialEmail),
     });
   } catch (error) {
-    console.error("Signup error:", error);
+    logger.error("Signup error:", error);
     return res.status(500).json({ success: false, message: "Signup failed" });
   }
 };
@@ -188,7 +190,7 @@ export const verifyOtp = async (req: Request, res: Response) => {
       `refresh:${user.id}:${jti}`,
       refreshToken,
       "EX",
-      process.env.JWT_REFRESH_TOKEN_IN,
+      parseInt(process.env.JWT_REFRESH_TOKEN_IN!),
     );
     res.cookie("accessToken", accessToken, {
       httpOnly: true,
@@ -202,13 +204,13 @@ export const verifyOtp = async (req: Request, res: Response) => {
       sameSite: "strict",
       maxAge: parseInt(process.env.JWT_REFRESH_TOKEN_IN!),
     });
-
+    logger.info("Verification completed", { collegeId });
     res.status(200).json({ success: true, message: "OTP Verified" });
   } catch (error) {
-    console.error("Verification error:", error);
+    logger.error("Verification error:", error);
     return res
       .status(500)
-      .json({ success: false, message: "Verification failed", error: error });
+      .json({ success: false, message: "Verification failed" });
   }
 };
 
@@ -230,6 +232,7 @@ export const login = async (req: Request, res: Response) => {
     const isLocked = await redis.exists(`login_lock:${ip}`);
     if (isLocked) {
       const ttl = await redis.ttl(`login_lock:${ip}`);
+      
       return res.status(429).json({
         success: false,
         message: "Too many failed login attempts. Try again later.",
@@ -281,19 +284,20 @@ export const login = async (req: Request, res: Response) => {
       `refresh:${user.id}:${jti}`,
       refreshToken,
       "EX",
-      process.env.JWT_REFRESH_TOKEN_IN,
+      parseInt(process.env.JWT_REFRESH_EXPIRES_IN!, 10),
     );
     res.cookie("accessToken", accessToken, {
       httpOnly: true,
       sameSite: "strict",
       secure: process.env.NODE_ENV === "production",
-      maxAge: 15 * 60,
+      maxAge: 15 * 60 * 1000,
     });
+
     res.cookie("refreshToken", refreshToken, {
       httpOnly: true,
       sameSite: "strict",
       secure: process.env.NODE_ENV === "production",
-      maxAge: 7 * 24 * 60 * 60 * 1000,
+      maxAge: parseInt(process.env.JWT_REFRESH_EXPIRES_IN!, 10) * 1000,
     });
     return res.status(200).json({
       success: true,
@@ -308,9 +312,7 @@ export const login = async (req: Request, res: Response) => {
     });
   } catch (error) {
     console.log("Login error", error);
-    res
-      .status(500)
-      .json({ success: false, message: "Internal server error", error: error });
+    res.status(500).json({ success: false, message: "Internal server error" });
   }
 };
 
@@ -448,9 +450,7 @@ export const forgetPassword = async (req: Request, res: Response) => {
     });
   } catch (error) {
     console.error(error);
-    res
-      .status(500)
-      .json({ success: false, message: "Internal server error", error: error });
+    res.status(500).json({ success: false, message: "Internal server error" });
   }
 };
 
@@ -548,7 +548,7 @@ export const logOut = async (req: Request, res: Response) => {
 export const resendOtp = async (req: Request, res: Response) => {
   const { collegeId } = req.body;
   try {
-    const user = await prisma.user.findUnique({
+    const user = await prisma.user.findFirst({
       where: {
         collegeId,
       },
@@ -564,26 +564,36 @@ export const resendOtp = async (req: Request, res: Response) => {
         message: "User not found try to register first",
       });
     }
-    const saltRounds = parseInt(process.env.BCRYPT_SALT_ROUNDS || "10", 10);
+    const saltRounds = parseInt(process.env.JWT_SALT || "10", 10);
     const otp = generateOtp();
     const hashedOtp = await bcrypt.hash(otp, saltRounds);
     const expiresAt = new Date(Date.now() + 5 * 60 * 1000);
 
-    await prisma.otp.upsert({
+    const existingOtp = await prisma.otp.findFirst({
       where: { userId: user.id },
-      update: {
-        code: hashedOtp,
-        expiresAt,
-        isUsed: false,
-        attempts: 0,
-        createdAt: new Date(),
-      },
-      create: {
-        userId: user.id,
-        code: hashedOtp,
-        expiresAt,
-      },
     });
+
+    if (existingOtp) {
+      await prisma.otp.update({
+        where: { id: existingOtp.id },
+        data: {
+          code: hashedOtp,
+          expiresAt,
+          isUsed: false,
+          attempts: 0,
+          createdAt: new Date(),
+        },
+      });
+    } else {
+      await prisma.otp.create({
+        data: {
+          userId: user.id,
+          code: hashedOtp,
+          expiresAt,
+        },
+      });
+    }
+
     await emailQueue.add("resend-forget-password-email", {
       email: roster?.officialEmail,
       name: roster?.studentName,
@@ -594,8 +604,6 @@ export const resendOtp = async (req: Request, res: Response) => {
       .json({ success: true, message: "Otp resended to your college Email" });
   } catch (error) {
     console.log(error);
-    res
-      .status(500)
-      .json({ success: false, message: "Internal server error", error: error });
+    res.status(500).json({ success: false, message: "Internal server error" });
   }
 };

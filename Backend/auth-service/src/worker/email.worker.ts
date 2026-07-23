@@ -1,21 +1,42 @@
 import { Worker } from "bullmq";
 import { connection } from "../config/redis.js";
+import { sendEmail } from "../utils/sendEmail.js";
+import {
+  otpEmailTemplate,
+  passwordResetEmailTemplate,
+} from "../utils/emailTemplates.js";
+import { logger } from "../config/logger.js";
 
 export const emailWorker = new Worker(
   "email",
   async (job) => {
-    console.log("Processing Job: ", job.name);
-    console.log("Processing job data: ", job.data);
+    logger.info(`Processing email job: ${job.name}`);
+
     switch (job.name) {
       case "send-signup-email":
-        console.log("Sending sign up otp on email: ", job.data.email);
+        await sendEmail({
+          toEmail: job.data.email,
+          subject: "CampusConnect - Verify Your Email",
+          htmlContent: otpEmailTemplate(job.data.name, job.data.otp),
+        });
         break;
+
       case "forget-password-email":
-        console.log("Sending forget password otp on email: ", job.data.email);
+        await sendEmail({
+          toEmail: job.data.email,
+          subject: "CampusConnect - Reset Your Password",
+          htmlContent: passwordResetEmailTemplate(job.data.name, job.data.otp),
+        });
         break;
+
       case "resend-forget-password-email":
-        console.log("Resending reset password otp on email: ", job.data.email);
+        await sendEmail({
+          toEmail: job.data.email,
+          subject: "CampusConnect - Your New OTP",
+          htmlContent: otpEmailTemplate(job.data.name, job.data.otp),
+        });
         break;
+
       default:
         throw new Error(`Unknown job: ${job.name}`);
     }
@@ -27,10 +48,11 @@ export const emailWorker = new Worker(
 );
 
 emailWorker.on("completed", (job) => {
-  console.log("Email sending completed on job id: ", job.id);
+  logger.info(`Email job completed: ${job.id}`);
 });
+
 emailWorker.on("failed", (job, err) => {
-  console.error("Email sending failed of job id: ", job?.id);
-  console.error(err);
+  logger.error(`Email job failed: ${job?.id}`, { error: err.message });
 });
+
 console.log("📨 Email Worker started...");
