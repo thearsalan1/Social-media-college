@@ -7,6 +7,7 @@ import { logger } from "../config/logger.js";
 interface RosterRow {
   collegeId: string;
   officialEmail: string;
+  collegeName: string;
   branch: string;
   studentName: string;
 }
@@ -42,6 +43,7 @@ export const uploadRoaster = async (req: Request, res: Response) => {
     const result = await prisma.studentRoster.createMany({
       data: rows.map((row) => ({
         collegeId: row.collegeId,
+        collegeName: row.collegeName,
         officialEmail: row.officialEmail,
         studentName: row.studentName,
         branch: row.branch,

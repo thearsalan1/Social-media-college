@@ -15,6 +15,7 @@ enum Role {
 model StudentRoster {
   id            String   @id @default(uuid())
   collegeId     String   @unique
+  collegeName   String
   officialEmail String
   studentName   String
   branch        String
@@ -27,6 +28,7 @@ model StudentRoster {
 model User {
   id             String   @id @default(uuid())
   name           String
+  collegeName    String   @default("Unknown")
   email          String   @unique
   password       String
   collegeId      String   @unique
@@ -43,13 +45,13 @@ model User {
 }
 
 model Otp {
-  id         String   @id @default(uuid())
-  code       String
-  userId     String
-  expiresAt  DateTime
-  isUsed     Boolean  @default(false)
-  attempts   Int      @default(0)
-  createdAt  DateTime @default(now())
+  id        String   @id @default(uuid())
+  code      String
+  userId    String
+  expiresAt DateTime
+  isUsed    Boolean  @default(false)
+  attempts  Int      @default(0)
+  createdAt DateTime @default(now())
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 

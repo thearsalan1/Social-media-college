@@ -15,7 +15,7 @@ import { logger } from "../config/logger.js";
 
 export const signup = async (req: Request, res: Response) => {
   try {
-    const { collegeId, name, password }: signupInput = req.body;
+    const { collegeId, name, password, collegeName }: signupInput = req.body;
 
     const roster = await prisma.studentRoster.findUnique({
       where: {
@@ -53,6 +53,7 @@ export const signup = async (req: Request, res: Response) => {
       data: {
         name,
         collegeId: roster.collegeId,
+        collegeName: roster.collegeName,
         email: roster.officialEmail,
         password: hashedPassword,
         branch: roster.branch,
@@ -77,6 +78,8 @@ export const signup = async (req: Request, res: Response) => {
     await prisma.otp.create({
       data: {
         code: hashedOtp,
+        collegeId: roster.collegeId,
+        collegeName: roster.collegeName,
         userId: newUser.id,
         expiresAt,
       },
@@ -474,6 +477,8 @@ export const forgetPassword = async (req: Request, res: Response) => {
       data: {
         code: hashedOtp,
         userId: user.id,
+        collegeId: roster.collegeId,
+        collegeName: roster.collegeName,
         expiresAt,
       },
     });

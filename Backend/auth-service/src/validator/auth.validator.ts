@@ -4,6 +4,9 @@ export const signupSchema = z.object({
   name: z.string().min(2, "Name must be greater than 2 characters"),
   collegeId: z.string().min(1, "College Id must be greater than 1 characters"),
   password: z.string().min(8, "Password must be greater than 8 characters"),
+  collegeName: z
+    .string()
+    .min(2, "College name must be at least two characters"),
 });
 
 export const otpSchema = z.object({

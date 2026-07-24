@@ -1,5 +1,5 @@
-collegeId,officialEmail,studentName,branch
-2021CS001,teri.apni.email@gmail.com,Rahul Sharma,CSE
-2021CS002,dost.ki.email@gmail.com,Priya Verma,CSE
-2021EC001,koi.aor.email@gmail.com,Amit Kumar,ECE
-BTECHCS230098,arsalanmohd1000@gmail.com,Mohd Arslan,CSE
+collegeId,officialEmail,studentName,branch,collegeName
+2021CS001,teri.apni.email@gmail.com,Rahul Sharma,CSE,GF
+2021CS002,dost.ki.email@gmail.com,Priya Verma,CSE,FIET
+2021EC001,koi.aor.email@gmail.com,Amit Kumar,ECE,GF
+BTECHCS230098,arsalanmohd1000@gmail.com,Mohd Arslan,CSE,FIET
