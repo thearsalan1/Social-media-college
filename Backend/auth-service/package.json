@@ -5,10 +5,10 @@
   "main": "index.ts",
   "type": "module",
   "scripts": {
-    "dev": "nodemon --watch . --ext ts --exec \"node --loader ts-node/esm index.ts\"",
-    "start": "node --loader ts-node/esm index.ts",
+    "dev": "nodemon --watch . --ext ts --exec \"tsx index.ts\"",
+    "start": "tsx index.ts",
     "build": "tsc",
-    "worker": "node --loader ts-node/esm src/worker/email.worker.ts"
+    "worker": "tsx src/worker/email.worker.ts"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.1.0",
@@ -43,6 +43,7 @@
     "nodemon": "^3.1.4",
     "prisma": "^7.8.0",
     "ts-node": "^10.9.2",
+    "tsx": "^3.12.7",
     "typescript": "^5.5.4"
   }
 }

@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { Readable } from "stream";
 import csvParser from "csv-parser";
 import { prisma } from "../db/prisma.js";
+import { logger } from "../config/logger.js";
 
 interface RosterRow {
   collegeId: string;
@@ -13,6 +14,7 @@ interface RosterRow {
 export const uploadRoaster = async (req: Request, res: Response) => {
   try {
     if (!req.file) {
+      logger.warn("Roster upload attempted without a file");
       return res.status(400).json({
         success: false,
         message: "Csv file needed to add college students",
@@ -30,6 +32,9 @@ export const uploadRoaster = async (req: Request, res: Response) => {
         });
     });
     if (rows.length === 0) {
+      logger.warn("Roster CSV parsed but contained no rows", {
+        fileName: req.file.originalname,
+      });
       return res
         .status(400)
         .json({ success: false, message: "No data is available in file" });
@@ -43,12 +48,18 @@ export const uploadRoaster = async (req: Request, res: Response) => {
       })),
       skipDuplicates: true,
     });
+    logger.info("Roster upload completed", {
+      fileName: req.file.originalname,
+      totalRows: rows.length,
+      imported: result.count,
+      skipped: rows.length - result.count,
+    });
     return res.status(201).json({
       success: true,
       message: `${result.count} students imported, ${rows.length - result.count} skipped (duplicates)`,
     });
   } catch (error) {
-    console.log(error);
+    logger.error("Roster upload failed:", error);
     return res
       .status(500)
       .json({ success: false, message: "Roster upload failed" });
@@ -69,14 +80,19 @@ export const filterBranch = async (req: Request, res: Response) => {
       },
     });
     if (users.length === 0) {
+      logger.info("Branch filter returned no users", { branch });
       return res
         .status(404)
         .json({ success: false, message: "Users not found" });
     }
     const filteredUsers = users.map(({ password, role, ...user }) => user);
+    logger.info("Users filtered by branch", {
+      branch,
+      count: filteredUsers.length,
+    });
     return res.status(200).json({ success: true, users: filteredUsers });
   } catch (error) {
-    console.log(error);
+    logger.error("Filter by branch failed:", error);
     return res
       .status(500)
       .json({ success: false, message: "Unable to filter users by branch" });

@@ -8,8 +8,9 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "outDir": "dist",
-    "rootDir": "./"
+    "rootDir": "./",
+    "typeRoots": ["./src/types", "./node_modules/@types"]
   },
-  "include": ["./**/*.ts", "test.csv","src","types"],
+  "include": ["./**/*.ts", "./**/*.d.ts", "test.csv", "src"],
   "exclude": ["node_modules", "dist"]
 }

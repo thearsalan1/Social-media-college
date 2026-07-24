@@ -1,0 +1,27 @@
+{"level":"info","message":"Cleanup: 0 unverified users removed","timestamp":"2026-07-24T04:44:02.468Z"}
+{"collegeId":"BTECHCS230098","level":"info","message":"OTP resent","timestamp":"2026-07-24T04:49:22.602Z","userId":"8e804b85-9787-42af-8cca-19add526a9c4"}
+{"level":"info","message":"Processing email job: resend-forget-password-email","timestamp":"2026-07-24T04:49:22.713Z"}
+{"level":"info","message":"Email job completed: 5","timestamp":"2026-07-24T04:49:24.240Z"}
+{"command":{"args":["refresh:8e804b85-9787-42af-8cca-19add526a9c4:6a67cf0a-856b-4f44-8c68-b450ae601075","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4ZTgwNGI4NS05Nzg3LTQyYWYtOGNjYS0xOWFkZDUyNmE5YzQiLCJjb2xsZWdlSWQiOiJCVEVDSENTMjMwMDk4IiwiYnJhbmNoIjoiQ1NFIiwicm9sZSI6IlNUVURFTlQiLCJqdGkiOiI2YTY3Y2YwYS04NTZiLTRmNDQtOGM2OC1iNDUwYWU2MDEwNzUiLCJpYXQiOjE3ODQ4Njg2MTEsImV4cCI6MTc4NTQ3MzQxMX0.9jQ2EY3Y87QPcRjulzEcgg2Uqch-nnlLzpYVpL5EjWY","EX","NaN"],"name":"set"},"level":"error","message":"Verification error: ERR value is not an integer or out of range","stack":"ReplyError: ERR value is not an integer or out of range\n    at parseError (D:\\project\\College Social media\\Backend\\auth-service\\node_modules\\redis-parser\\lib\\parser.js:179:12)\n    at parseType (D:\\project\\College Social media\\Backend\\auth-service\\node_modules\\redis-parser\\lib\\parser.js:302:14)","timestamp":"2026-07-24T04:50:11.173Z"}
+{"collegeId":"BTECHCS230098","level":"warn","message":"OTP not found or expired","timestamp":"2026-07-24T04:53:48.204Z","userId":"8e804b85-9787-42af-8cca-19add526a9c4"}
+{"collegeId":"BTECHCS230098","level":"info","message":"OTP resent","timestamp":"2026-07-24T04:54:02.443Z","userId":"8e804b85-9787-42af-8cca-19add526a9c4"}
+{"level":"info","message":"Processing email job: resend-forget-password-email","timestamp":"2026-07-24T04:54:02.504Z"}
+{"level":"info","message":"Email job completed: 6","timestamp":"2026-07-24T04:54:03.460Z"}
+{"collegeId":"BTECHCS230098","level":"info","message":"OTP resent","timestamp":"2026-07-24T04:54:06.637Z","userId":"8e804b85-9787-42af-8cca-19add526a9c4"}
+{"level":"info","message":"Processing email job: resend-forget-password-email","timestamp":"2026-07-24T04:54:06.688Z"}
+{"level":"info","message":"Email job completed: 7","timestamp":"2026-07-24T04:54:07.351Z"}
+{"collegeId":"BTECHCS230098","level":"info","message":"Verification completed","timestamp":"2026-07-24T04:55:09.879Z","userId":"8e804b85-9787-42af-8cca-19add526a9c4"}
+{"command":{"args":["refresh:8e804b85-9787-42af-8cca-19add526a9c4:3a38d776-f74a-4273-ab1e-8073ce9574fd","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4ZTgwNGI4NS05Nzg3LTQyYWYtOGNjYS0xOWFkZDUyNmE5YzQiLCJjb2xsZWdlSWQiOiJCVEVDSENTMjMwMDk4IiwiYnJhbmNoIjoiQ1NFIiwicm9sZSI6IlNUVURFTlQiLCJqdGkiOiIzYTM4ZDc3Ni1mNzRhLTQyNzMtYWIxZS04MDczY2U5NTc0ZmQiLCJpYXQiOjE3ODQ4Njg5NjQsImV4cCI6MTc4NTQ3Mzc2NH0.tjBQmTEF6Wln7UDETy3j51BgdskOaTMcerEjxLOdJ3A","EX",""],"name":"set"},"level":"error","message":"Refresh token error: ERR value is not an integer or out of range","stack":"ReplyError: ERR value is not an integer or out of range\n    at parseError (D:\\project\\College Social media\\Backend\\auth-service\\node_modules\\redis-parser\\lib\\parser.js:179:12)\n    at parseType (D:\\project\\College Social media\\Backend\\auth-service\\node_modules\\redis-parser\\lib\\parser.js:302:14)","timestamp":"2026-07-24T04:56:04.217Z"}
+{"jti":"ab892819-fc7f-4ccd-8c94-8e248058228b","level":"warn","message":"Refresh token not recognized / reuse detected","timestamp":"2026-07-24T04:57:00.714Z","userId":"8e804b85-9787-42af-8cca-19add526a9c4"}
+{"collegeId":"BTECHCS230098","ip":"::1","level":"info","message":"Login successful","timestamp":"2026-07-24T04:57:26.023Z","userId":"8e804b85-9787-42af-8cca-19add526a9c4"}
+{"level":"info","message":"Access token refreshed","timestamp":"2026-07-24T04:58:17.309Z","userId":"8e804b85-9787-42af-8cca-19add526a9c4"}
+{"collegeId":"BTECHCS230098","level":"info","message":"Forget password OTP sent","timestamp":"2026-07-24T04:59:45.479Z","userId":"8e804b85-9787-42af-8cca-19add526a9c4"}
+{"level":"info","message":"Processing email job: forget-password-email","timestamp":"2026-07-24T04:59:45.546Z"}
+{"level":"info","message":"Email job completed: 8","timestamp":"2026-07-24T04:59:46.808Z"}
+{"collegeId":"BTECHCS230098","level":"info","message":"Password reset successful","timestamp":"2026-07-24T05:01:11.902Z","userId":"8e804b85-9787-42af-8cca-19add526a9c4"}
+{"attempt":1,"collegeId":"BTECHCS230098","ip":"::1","level":"warn","message":"Invalid login credentials","timestamp":"2026-07-24T05:01:45.899Z"}
+{"collegeId":"BTECHCS230098","ip":"::1","level":"info","message":"Login successful","timestamp":"2026-07-24T05:02:00.357Z","userId":"8e804b85-9787-42af-8cca-19add526a9c4"}
+{"fieldsUpdated":["bio"],"level":"info","message":"User profile updated","timestamp":"2026-07-24T05:05:56.472Z","userId":"8e804b85-9787-42af-8cca-19add526a9c4"}
+{"collegeId":"8e804b85-9787-42af-8cca-19add526a9c4","level":"warn","message":"getUserById - user not found","timestamp":"2026-07-24T05:06:49.617Z"}
+{"collegeId":"search","level":"warn","message":"getUserById - user not found","timestamp":"2026-07-24T05:08:31.708Z"}
+{"collegeId":"search","level":"warn","message":"getUserById - user not found","timestamp":"2026-07-24T05:08:48.913Z"}

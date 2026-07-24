@@ -23,6 +23,7 @@ export const signup = async (req: Request, res: Response) => {
       },
     });
     if (!roster) {
+      logger.warn("Signup attempt with invalid collegeId", { collegeId });
       return res.status(404).json({
         success: false,
         message:
@@ -30,12 +31,16 @@ export const signup = async (req: Request, res: Response) => {
       });
     }
     if (roster.isRegistered) {
+      logger.warn("Signup attempt for already registered student", {
+        collegeId,
+      });
       return res.status(400).json({
         success: false,
         message: "Student already registered. Try to login.",
       });
     }
     if (!roster.officialEmail) {
+      logger.error("Roster missing officialEmail", { collegeId });
       return res.status(404).json({
         success: false,
         message: "Students email not found.",
@@ -82,7 +87,7 @@ export const signup = async (req: Request, res: Response) => {
       name: newUser.name,
       otp: otp,
     });
-    logger.info("User signup successful", { collegeId });
+    logger.info("User signup successful", { collegeId, userId: newUser.id });
     return res.status(201).json({
       success: true,
       message: "Account created. OTP sent to your college email.",
@@ -103,6 +108,7 @@ export const verifyOtp = async (req: Request, res: Response) => {
       },
     });
     if (!user) {
+      logger.warn("OTP verify attempt for non-existent user", { collegeId });
       return res.status(400).json({
         success: false,
         message: "No user found. Register yourself first.",
@@ -121,6 +127,7 @@ export const verifyOtp = async (req: Request, res: Response) => {
       },
     });
     if (!otpRecord) {
+      logger.warn("OTP not found or expired", { collegeId, userId: user.id });
       return res.status(400).json({
         success: false,
         message: "OTP not found.",
@@ -128,6 +135,7 @@ export const verifyOtp = async (req: Request, res: Response) => {
     }
 
     if (otpRecord.attempts >= 5) {
+      logger.warn("Max OTP attempts reached", { collegeId, userId: user.id });
       return res.status(429).json({
         success: false,
         message: "Maximum attempts reached. Please request a new OTP.",
@@ -145,6 +153,11 @@ export const verifyOtp = async (req: Request, res: Response) => {
             increment: 1,
           },
         },
+      });
+      logger.warn("Invalid OTP attempt", {
+        collegeId,
+        userId: user.id,
+        attemptsLeft: 4 - otpRecord.attempts,
       });
 
       return res.status(400).json({
@@ -190,7 +203,7 @@ export const verifyOtp = async (req: Request, res: Response) => {
       `refresh:${user.id}:${jti}`,
       refreshToken,
       "EX",
-      parseInt(process.env.JWT_REFRESH_TOKEN_IN!),
+      parseInt(process.env.JWT_REFRESH_EXPIRES_IN!),
     );
     res.cookie("accessToken", accessToken, {
       httpOnly: true,
@@ -202,9 +215,9 @@ export const verifyOtp = async (req: Request, res: Response) => {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: "strict",
-      maxAge: parseInt(process.env.JWT_REFRESH_TOKEN_IN!),
+      maxAge: parseInt(process.env.JWT_REFRESH_EXPIRES_IN!),
     });
-    logger.info("Verification completed", { collegeId });
+    logger.info("Verification completed", { collegeId, userId: user.id });
     res.status(200).json({ success: true, message: "OTP Verified" });
   } catch (error) {
     logger.error("Verification error:", error);
@@ -224,6 +237,7 @@ export const login = async (req: Request, res: Response) => {
       },
     });
     if (!user) {
+      logger.warn("Login attempt for non-existent user", { collegeId, ip });
       return res.status(404).json({
         success: false,
         message: "User not found. Register user first.",
@@ -232,7 +246,8 @@ export const login = async (req: Request, res: Response) => {
     const isLocked = await redis.exists(`login_lock:${ip}`);
     if (isLocked) {
       const ttl = await redis.ttl(`login_lock:${ip}`);
-      
+      logger.warn("Login attempt blocked - IP locked", { collegeId, ip, ttl });
+
       return res.status(429).json({
         success: false,
         message: "Too many failed login attempts. Try again later.",
@@ -241,6 +256,10 @@ export const login = async (req: Request, res: Response) => {
     }
     let attempt = 0;
     if (!user.isVerified) {
+      logger.warn("Login attempt for unverified user", {
+        collegeId,
+        userId: user.id,
+      });
       return res.status(400).json({
         success: false,
         message: "User is not verified. Verify your email.",
@@ -255,6 +274,10 @@ export const login = async (req: Request, res: Response) => {
       if (attempt >= 5) {
         await redis.set(`login_lock:${ip}`, "locked", "EX", 15 * 60);
         await redis.del(`login_attempts:${ip}`);
+        logger.warn("IP locked due to repeated failed logins", {
+          collegeId,
+          ip,
+        });
 
         return res.status(429).json({
           success: false,
@@ -262,6 +285,7 @@ export const login = async (req: Request, res: Response) => {
             "Too many failed login attempts. Try again after 15 minutes.",
         });
       }
+      logger.warn("Invalid login credentials", { collegeId, ip, attempt });
       return res
         .status(404)
         .json({ success: false, message: "Invalid Credentials" });
@@ -299,6 +323,7 @@ export const login = async (req: Request, res: Response) => {
       secure: process.env.NODE_ENV === "production",
       maxAge: parseInt(process.env.JWT_REFRESH_EXPIRES_IN!, 10) * 1000,
     });
+    logger.info("Login successful", { collegeId, userId: user.id, ip });
     return res.status(200).json({
       success: true,
       message: "Login successful",
@@ -311,7 +336,7 @@ export const login = async (req: Request, res: Response) => {
       },
     });
   } catch (error) {
-    console.log("Login error", error);
+    logger.error("Login error:", error);
     res.status(500).json({ success: false, message: "Internal server error" });
   }
 };
@@ -321,6 +346,7 @@ export const refreshAccessToken = async (req: Request, res: Response) => {
     const oldRefreshToken = req.cookies?.refreshToken;
 
     if (!oldRefreshToken) {
+      logger.warn("Refresh token missing in request");
       return res
         .status(401)
         .json({ success: false, message: "Refresh token missing" });
@@ -333,6 +359,10 @@ export const refreshAccessToken = async (req: Request, res: Response) => {
     const storedToken = await redis.get(`refresh:${userId}:${jti}`);
 
     if (!storedToken || storedToken !== oldRefreshToken) {
+      logger.warn("Refresh token not recognized / reuse detected", {
+        userId,
+        jti,
+      });
       return res.status(401).json({
         success: false,
         message: "Refresh token not recognized. Please login again.",
@@ -342,6 +372,7 @@ export const refreshAccessToken = async (req: Request, res: Response) => {
     const user = await prisma.user.findUnique({ where: { id: userId } });
 
     if (!user) {
+      logger.warn("Refresh token valid but user not found", { userId });
       return res
         .status(401)
         .json({ success: false, message: "User not found" });
@@ -367,7 +398,7 @@ export const refreshAccessToken = async (req: Request, res: Response) => {
       `refresh:${user.id}:${newJti}`,
       newRefreshToken,
       "EX",
-      process.env.JWT_REFRESH_TOKEN_IN as string,
+      process.env.JWT_REFRESH_EXPIRES_IN as string,
     );
 
     res.cookie("accessToken", newAccessToken, {
@@ -384,9 +415,10 @@ export const refreshAccessToken = async (req: Request, res: Response) => {
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
+    logger.info("Access token refreshed", { userId: user.id });
     return res.status(200).json({ success: true, message: "Token refreshed" });
   } catch (error) {
-    console.error("Refresh token error:", error);
+    logger.error("Refresh token error:", error);
     return res
       .status(500)
       .json({ success: false, message: "Failed to refresh token" });
@@ -397,6 +429,7 @@ export const forgetPassword = async (req: Request, res: Response) => {
   try {
     const { collegeId } = req.body;
     if (!collegeId) {
+      logger.warn("Forget password called without collegeId");
       return res
         .status(404)
         .json({ success: false, message: "college Id required" });
@@ -408,6 +441,9 @@ export const forgetPassword = async (req: Request, res: Response) => {
     });
 
     if (!user) {
+      logger.warn("Forget password attempt for non-existent user", {
+        collegeId,
+      });
       return res
         .status(404)
         .json({ success: false, message: "User not found " });
@@ -418,6 +454,10 @@ export const forgetPassword = async (req: Request, res: Response) => {
       },
     });
     if (!roster) {
+      logger.error("Roster not found for existing user", {
+        collegeId,
+        userId: user.id,
+      });
       return res.status(404).json({
         success: false,
         message:
@@ -443,13 +483,14 @@ export const forgetPassword = async (req: Request, res: Response) => {
       otp: otp,
     });
 
+    logger.info("Forget password OTP sent", { collegeId, userId: user.id });
     return res.status(201).json({
       success: true,
       message: "Forgot password. OTP sent to your college email.",
       maskedEmail: maskedEmail(roster.officialEmail),
     });
   } catch (error) {
-    console.error(error);
+    logger.error("Forget password error:", error);
     res.status(500).json({ success: false, message: "Internal server error" });
   }
 };
@@ -473,6 +514,9 @@ export const resetPassword = async (req: Request, res: Response) => {
 
     const user = await prisma.user.findUnique({ where: { collegeId } });
     if (!user) {
+      logger.warn("Reset password attempt for non-existent user", {
+        collegeId,
+      });
       return res.status(400).json({
         success: false,
         message: "User not found",
@@ -484,6 +528,10 @@ export const resetPassword = async (req: Request, res: Response) => {
       orderBy: { createdAt: "desc" },
     });
     if (!otpRecord) {
+      logger.warn("Reset password OTP expired or not found", {
+        collegeId,
+        userId: user.id,
+      });
       return res.status(400).json({
         success: false,
         message: "OTP expired or not found. Request again.",
@@ -492,6 +540,7 @@ export const resetPassword = async (req: Request, res: Response) => {
 
     const isOtpValid = await bcrypt.compare(otp, otpRecord.code);
     if (!isOtpValid) {
+      logger.warn("Reset password invalid OTP", { collegeId, userId: user.id });
       return res.status(400).json({ success: false, message: "Invalid OTP" });
     }
 
@@ -507,12 +556,13 @@ export const resetPassword = async (req: Request, res: Response) => {
       data: { password: hashedPassword, updatedAt: new Date() },
     });
 
+    logger.info("Password reset successful", { collegeId, userId: user.id });
     res.status(200).json({
       success: true,
       message: "Password reset successfully. Please login.",
     });
   } catch (error) {
-    console.error(error);
+    logger.error("Reset password error:", error);
     res.status(500).json({
       success: false,
       message: "Internal server error",
@@ -532,12 +582,13 @@ export const logOut = async (req: Request, res: Response) => {
       secure: true,
       sameSite: "strict",
     });
+    logger.info("User logged out", { userId: (req as any).user?.userId });
     res.status(200).json({
       success: true,
       message: "Logged out successfully.",
     });
   } catch (error) {
-    console.error(error);
+    logger.error("Logout error:", error);
     res.status(500).json({
       success: false,
       message: "Internal server error",
@@ -559,6 +610,7 @@ export const resendOtp = async (req: Request, res: Response) => {
       },
     });
     if (!user) {
+      logger.warn("Resend OTP attempt for non-existent user", { collegeId });
       return res.status(404).json({
         success: false,
         message: "User not found try to register first",
@@ -599,11 +651,12 @@ export const resendOtp = async (req: Request, res: Response) => {
       name: roster?.studentName,
       otp,
     });
+    logger.info("OTP resent", { collegeId, userId: user.id });
     res
       .status(200)
       .json({ success: true, message: "Otp resended to your college Email" });
   } catch (error) {
-    console.log(error);
+    logger.error("Resend OTP error:", error);
     res.status(500).json({ success: false, message: "Internal server error" });
   }
 };
