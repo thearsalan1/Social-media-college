@@ -39,3 +39,4 @@
 {"level":"info","message":"Email job completed: 9","timestamp":"2026-07-24T09:00:47.684Z"}
 {"collegeId":"BTECHCS230098","level":"info","message":"Verification completed","timestamp":"2026-07-24T09:01:16.728Z","userId":"425326c7-3e42-4fdf-b0d7-c1b69dde283b"}
 {"level":"info","message":"Access token refreshed","timestamp":"2026-07-24T09:09:35.043Z","userId":"425326c7-3e42-4fdf-b0d7-c1b69dde283b"}
+{"collegeId":"BTECHCS230098","ip":"::1","level":"info","message":"Login successful","timestamp":"2026-07-24T10:40:06.638Z","userId":"425326c7-3e42-4fdf-b0d7-c1b69dde283b"}

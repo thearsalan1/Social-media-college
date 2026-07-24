@@ -8,6 +8,7 @@ declare global {
         userId: string;
         collegeId: string;
         branch: string;
+        collegeName: string;
         role: string;
       };
     }

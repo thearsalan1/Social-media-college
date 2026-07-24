@@ -7,6 +7,7 @@ interface TokenPayload {
   role: string;
   collegeId: string;
   branch: string;
+  collegeName: string;
 }
 
 export function generateAccessToken(payload: TokenPayload): string {
@@ -41,7 +42,9 @@ export function generateOtp() {
   return otp.toString();
 }
 
-export function verifyRefreshToken(token: string): TokenPayload & { jti: string } {
+export function verifyRefreshToken(
+  token: string,
+): TokenPayload & { jti: string } {
   const secret = process.env.REFRESH_TOKEN_SECRET;
   if (!secret) throw new Error("REFRESH_TOKEN_SECRET not defined");
   return jwt.verify(token, secret) as TokenPayload & { jti: string };

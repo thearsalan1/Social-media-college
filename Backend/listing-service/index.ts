@@ -20,9 +20,6 @@ app.use("/health", (req: Request, res: Response) => {
     .json({ success: true, message: "listing-service is running " });
 });
 
-const token = await connection.get("RefreshToken");
-console.log(token);
-
 connection;
 
 const PORT = process.env.PORT || "5002";

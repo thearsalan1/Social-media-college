@@ -1,5 +1,10 @@
 import { prisma } from "../db/prisma.js";
 import { loginInput, signupInput } from "./../validator/auth.validator.js";
+import {
+  ACCESS_TOKEN_MAX_AGE_MS,
+  REFRESH_TOKEN_MAX_AGE_MS,
+  REFRESH_TOKEN_REDIS_EX_SECONDS,
+} from "../config/constant.js";
 import { Request, Response } from "express";
 import bcrypt from "bcryptjs";
 import {
@@ -78,8 +83,6 @@ export const signup = async (req: Request, res: Response) => {
     await prisma.otp.create({
       data: {
         code: hashedOtp,
-        collegeId: roster.collegeId,
-        collegeName: roster.collegeName,
         userId: newUser.id,
         expiresAt,
       },
@@ -193,6 +196,7 @@ export const verifyOtp = async (req: Request, res: Response) => {
       collegeId: user.collegeId,
       branch: user.branch,
       role: user.role,
+      collegeName: user.collegeName,
     });
 
     const { token: refreshToken, jti } = generateRefreshToken({
@@ -200,25 +204,26 @@ export const verifyOtp = async (req: Request, res: Response) => {
       collegeId: user.collegeId,
       branch: user.branch,
       role: user.role,
+      collegeName: user.collegeName,
     });
 
     await redis.set(
       `refresh:${user.id}:${jti}`,
       refreshToken,
       "EX",
-      parseInt(process.env.JWT_REFRESH_EXPIRES_IN!),
+      REFRESH_TOKEN_REDIS_EX_SECONDS,
     );
     res.cookie("accessToken", accessToken, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: "strict",
-      maxAge: parseInt(process.env.JWT_ACCESS_EXPIRES_IN!),
+      maxAge: ACCESS_TOKEN_MAX_AGE_MS,
     });
     res.cookie("refreshToken", refreshToken, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: "strict",
-      maxAge: parseInt(process.env.JWT_REFRESH_EXPIRES_IN!),
+      maxAge: REFRESH_TOKEN_MAX_AGE_MS,
     });
     logger.info("Verification completed", { collegeId, userId: user.id });
     res.status(200).json({ success: true, message: "OTP Verified" });
@@ -299,32 +304,33 @@ export const login = async (req: Request, res: Response) => {
       collegeId: user.collegeId,
       branch: user.branch,
       role: user.role,
+      collegeName: user.collegeName,
     });
     const { token: refreshToken, jti } = generateRefreshToken({
       userId: user.id,
       collegeId: user.collegeId,
       branch: user.branch,
       role: user.role,
+      collegeName: user.collegeName,
     });
 
     await redis.set(
       `refresh:${user.id}:${jti}`,
       refreshToken,
       "EX",
-      parseInt(process.env.JWT_REFRESH_EXPIRES_IN!, 10),
+      REFRESH_TOKEN_REDIS_EX_SECONDS,
     );
     res.cookie("accessToken", accessToken, {
       httpOnly: true,
-      sameSite: "strict",
       secure: process.env.NODE_ENV === "production",
-      maxAge: 15 * 60 * 1000,
+      sameSite: "strict",
+      maxAge: ACCESS_TOKEN_MAX_AGE_MS,
     });
-
     res.cookie("refreshToken", refreshToken, {
       httpOnly: true,
-      sameSite: "strict",
       secure: process.env.NODE_ENV === "production",
-      maxAge: parseInt(process.env.JWT_REFRESH_EXPIRES_IN!, 10) * 1000,
+      sameSite: "strict",
+      maxAge: REFRESH_TOKEN_MAX_AGE_MS,
     });
     logger.info("Login successful", { collegeId, userId: user.id, ip });
     return res.status(200).json({
@@ -388,6 +394,7 @@ export const refreshAccessToken = async (req: Request, res: Response) => {
       collegeId: user.collegeId,
       branch: user.branch,
       role: user.role,
+      collegeName: user.collegeName,
     });
 
     const { token: newRefreshToken, jti: newJti } = generateRefreshToken({
@@ -395,27 +402,26 @@ export const refreshAccessToken = async (req: Request, res: Response) => {
       collegeId: user.collegeId,
       branch: user.branch,
       role: user.role,
+      collegeName: user.collegeName,
     });
 
     await redis.set(
-      `refresh:${user.id}:${newJti}`,
+      `refresh:${user.id}:${jti}`,
       newRefreshToken,
       "EX",
-      process.env.JWT_REFRESH_EXPIRES_IN as string,
+      REFRESH_TOKEN_REDIS_EX_SECONDS,
     );
-
     res.cookie("accessToken", newAccessToken, {
       httpOnly: true,
-      sameSite: "strict",
       secure: process.env.NODE_ENV === "production",
-      maxAge: 15 * 60 * 1000,
+      sameSite: "strict",
+      maxAge:ACCESS_TOKEN_MAX_AGE_MS,
     });
-
     res.cookie("refreshToken", newRefreshToken, {
       httpOnly: true,
-      sameSite: "strict",
       secure: process.env.NODE_ENV === "production",
-      maxAge: 7 * 24 * 60 * 60 * 1000,
+      sameSite: "strict",
+      maxAge: REFRESH_TOKEN_MAX_AGE_MS,
     });
 
     logger.info("Access token refreshed", { userId: user.id });
@@ -477,8 +483,6 @@ export const forgetPassword = async (req: Request, res: Response) => {
       data: {
         code: hashedOtp,
         userId: user.id,
-        collegeId: roster.collegeId,
-        collegeName: roster.collegeName,
         expiresAt,
       },
     });

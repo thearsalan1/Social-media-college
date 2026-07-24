@@ -79,6 +79,7 @@ export const filterBranch = async (req: Request, res: Response) => {
     const users = await prisma.user.findMany({
       where: {
         branch: branch,
+        collegeName: req.user!.collegeName,
       },
     });
     if (users.length === 0) {
