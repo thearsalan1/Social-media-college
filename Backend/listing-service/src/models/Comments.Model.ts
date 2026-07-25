@@ -1,6 +1,5 @@
-import e from "express";
+import mongoose from "mongoose";
 import { CommentInterface, targetType } from "./../types/types.js";
-import mongoose, { mongo } from "mongoose";
 
 const CommentSchema = new mongoose.Schema<CommentInterface>(
   {
@@ -8,6 +7,8 @@ const CommentSchema = new mongoose.Schema<CommentInterface>(
       type: String,
       required: true,
       trim: true,
+      minlength: 1,
+      maxlength: 300,
     },
     userId: {
       type: String,
@@ -35,9 +36,11 @@ const CommentSchema = new mongoose.Schema<CommentInterface>(
       required: true,
       default: 0,
     },
-    reportedBy: {
-      type: String,
-    },
+    reportedBy: [
+      {
+        type: String,
+      },
+    ],
     ishidden: {
       type: Boolean,
       required: true,

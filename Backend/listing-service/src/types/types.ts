@@ -7,8 +7,8 @@ export enum ItemCategory {
   Other = "other",
 }
 export enum itemStatus {
-  Available = "Available",
-  Sold = "sold",
+  Available = "AVAILABLE",
+  Sold = "SOLD",
 }
 
 export enum targetType {
@@ -28,7 +28,7 @@ export interface MarketPlaceInterface {
   collegeName: string;
   branch: string;
   reportCount: number;
-  reportedBy: string;
+  reportedBy: string[];
   ishidden: boolean;
   hiddenAt: Date;
 }
@@ -41,7 +41,7 @@ export interface socialPostInterface {
   collegeName: string;
   branch: string;
   reportCount: number;
-  reportedBy: string;
+  reportedBy: string[];
   ishidden: boolean;
   hiddenAt: Date;
 }
@@ -53,7 +53,7 @@ export interface CommentInterface {
   targetType: targetType;
   targetId: string;
   reportCount: number;
-  reportedBy: string;
+  reportedBy: string[];
   ishidden: boolean;
   hiddenAt: Date;
 }
