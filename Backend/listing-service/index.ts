@@ -3,6 +3,7 @@ import "dotenv/config";
 import express, { Request, Response } from "express";
 import cors from "cors";
 import { connection } from "./src/config/redis.js";
+import { connectDB } from "./src/config/db.js";
 
 const app = express();
 app.use(helmet());
@@ -20,6 +21,7 @@ app.use("/health", (req: Request, res: Response) => {
     .json({ success: true, message: "listing-service is running " });
 });
 
+connectDB();
 connection;
 
 const PORT = process.env.PORT || "5002";
