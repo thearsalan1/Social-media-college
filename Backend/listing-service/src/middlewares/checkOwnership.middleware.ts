@@ -1,0 +1,22 @@
+import { Request, Response, NextFunction } from "express";
+import { Model } from "mongoose";
+
+export function checkOwnership(model: Model<any>) {
+    return async (req: Request, res: Response, next: NextFunction) => {
+        try {
+            const item = await model.findById(req.params.id);
+
+            if (!item) {
+                return res.status(404).json({ success: false, message: "Not found" });
+            }
+
+            if (item.userId !== req.user?.userId) {
+                return res.status(403).json({ success: false, message: "Not your item" });
+            }
+
+            next();
+        } catch (error) {
+            return res.status(500).json({ success: false, message: "Ownership check failed" });
+        }
+    };
+}
