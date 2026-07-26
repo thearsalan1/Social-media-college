@@ -8,6 +8,7 @@ interface TokenPayload {
   collegeId: string;
   branch: string;
   collegeName: string;
+  name: string
 }
 
 export function generateAccessToken(payload: TokenPayload): string {

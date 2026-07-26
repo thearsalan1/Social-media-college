@@ -1,7 +1,7 @@
 import z from "zod";
 import { ItemCategory, targetType } from "../types/types.js";
 
-const createMarketplaceSchema = z.object({
+export const createMarketplaceSchema = z.object({
     title: z.string().min(3).max(100),
     description: z.string().min(50).max(300),
     price: z.number().min(10).max(10000),
