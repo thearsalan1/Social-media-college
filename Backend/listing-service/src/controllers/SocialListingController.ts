@@ -44,7 +44,7 @@ export const getMyPosts = async (req: Request, res: Response) => {
             return res.status(400).json({ success: false, message: "User id not found" })
         }
         const userPosts = await SocialPost.find({
-            user_Id: userId
+            userId: userId
         })
         if (!userPosts || userPosts.length === 0) {
             return res.status(200).json({ success: true, message: "User has no posts" })
@@ -66,7 +66,11 @@ export const getPostById = async (req: Request, res: Response) => {
         if (!postId) {
             return res.status(400).json({ success: false, message: "Post id not found" })
         }
-        const post = await SocialPost.findById({ _id: postId })
+        const post = await SocialPost.findOne({
+            _id: postId,
+            collegeName: req.user!.collegeName,
+            ishidden: false,
+        });
         if (!post) {
             return res.status(404).json({ success: false, message: "Post not found" })
         }
@@ -89,11 +93,8 @@ export const updatePost = async (req: Request, res: Response) => {
         if (!postId) {
             return res.status(400).json({ success: false, message: "Post id not found" })
         }
-        if (content) {
-            return res.status(400).json({ success: false, message: "Content for post not found" })
-        }
-        if (image) {
-            return res.status(400).json({ success: false, message: "Image for post not found" })
+        if (!content && !image) {
+            return res.status(400).json({ success: false, message: "Provide content or image to update" });
         }
         if (!userId) {
             return res.status(400).json({ success: false, message: "User id not found" })
@@ -101,9 +102,6 @@ export const updatePost = async (req: Request, res: Response) => {
         const post = await SocialPost.findOne({ _id: postId })
         if (!post) {
             return res.status(404).json({ success: false, message: "Post not found" })
-        }
-        if (post.userId !== userId) {
-            return res.status(401).json({ success: false, message: "Unauthorized" })
         }
         if (content) {
             post.content = content
@@ -133,12 +131,9 @@ export const deletePost = async (req: Request, res: Response) => {
         if (!userId) {
             return res.status(400).json({ success: false, message: "User id not found" })
         }
-        const post = await SocialPost.findById({ _id: postId })
+        const post = await SocialPost.findById({ postId })
         if (!post) {
             return res.status(404).json({ success: false, message: "Post not found" })
-        }
-        if (post.userId.toString() !== userId.toString()) {
-            return res.status(401).json({ success: false, message: "Unauthorized" })
         }
         const deletedPost = await SocialPost.findByIdAndDelete({ _id: postId })
         if (!deletedPost) {
@@ -156,3 +151,38 @@ export const deletePost = async (req: Request, res: Response) => {
     }
 }
 
+export const getAllPosts = async (req: Request, res: Response) => {
+    try {
+        const { branch, userId, page, limit } = req.query;
+
+        const filter: Record<string, any> = {
+            collegeName: req.user!.collegeName,
+            ishidden: false,
+        };
+
+        if (branch) filter.branch = branch;
+        if (userId) filter.userId = userId;
+
+        const pageNum = Math.max(1, parseInt(page as string) || 1);
+        const limitNum = Math.min(50, parseInt(limit as string) || 20);
+        const skip = (pageNum - 1) * limitNum;
+
+        const [posts, total] = await Promise.all([
+            SocialPost.find(filter).sort({ createdAt: -1 }).skip(skip).limit(limitNum),
+            SocialPost.countDocuments(filter),
+        ]);
+
+        return res.status(200).json({
+            success: true,
+            data: posts,
+            pagination: {
+                currentPage: pageNum,
+                totalPages: Math.ceil(total / limitNum),
+                totalItems: total,
+            },
+        });
+    } catch (error) {
+        logger.error("Get all posts failed", { error });
+        return res.status(500).json({ success: false, message: "Failed to fetch posts" });
+    }
+};
