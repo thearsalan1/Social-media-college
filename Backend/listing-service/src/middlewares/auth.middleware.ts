@@ -10,6 +10,7 @@ declare global {
                 collegeId: string;
                 collegeName: string;
                 branch: string;
+                name: string
             };
         }
     }
