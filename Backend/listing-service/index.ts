@@ -4,6 +4,7 @@ import express, { Request, Response } from "express";
 import cors from "cors";
 import { connection } from "./src/config/redis.js";
 import { connectDB } from "./src/config/db.js";
+import SocialListingRouter from "./src/routes/SocialListing.routes.js"
 
 const app = express();
 app.use(helmet());
@@ -14,6 +15,7 @@ app.use(
   }),
 );
 app.use(express.json());
+app.use("/listing", SocialListingRouter);
 
 app.use("/health", (req: Request, res: Response) => {
   res

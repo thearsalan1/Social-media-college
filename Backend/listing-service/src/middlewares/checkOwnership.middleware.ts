@@ -1,10 +1,10 @@
 import { Request, Response, NextFunction } from "express";
 import { Model } from "mongoose";
 
-export function checkOwnership(model: Model<any>) {
+export function checkOwnership(model: Model<any>, paramsName: string = "id") {
     return async (req: Request, res: Response, next: NextFunction) => {
         try {
-            const item = await model.findById(req.params.id);
+            const item = await model.findById(req.params[paramsName]);
 
             if (!item) {
                 return res.status(404).json({ success: false, message: "Not found" });

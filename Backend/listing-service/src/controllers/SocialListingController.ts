@@ -1,10 +1,12 @@
 import { Request, Response } from "express";
 import { SocialPost } from "../models/SocialPost.model.js";
 import { logger } from "../config/logger.js";
+import { uploadMultipleImages } from "../utils/uploadToCloudinary.js";
 
 export const createSocialPost = async (req: Request, res: Response) => {
-    const { content, image } = req.body;
+    const { content } = req.body;
     const { userId, collegeName, branch, name } = req.user!
+    const files = req.files as Express.Multer.File[] | undefined;
     try {
         if (!userId || !collegeName || !branch) {
             return res.status(400).json({ success: false, message: "User need to be authenticated first" })
@@ -12,17 +14,18 @@ export const createSocialPost = async (req: Request, res: Response) => {
         if (!content || content.length === 0) {
             return res.status(400).json({ success: false, message: "Post cannot be empty" })
         }
-        if (!image) {
-            return res.status(400).json({ success: false, message: "Image is required" })
+        let imageUrls: string[] = [];
+        if (files && files.length > 0) {
+            imageUrls = await uploadMultipleImages(files, "social-posts");
         }
         const newPost = await SocialPost.create({
-            content: content,
-            image: image,
-            userId: userId,
+            content,
+            image: imageUrls,
+            userId,
             userName: name,
-            collegeName: collegeName,
-            branch: branch,
-        })
+            collegeName,
+            branch,
+        });
         if (!newPost) {
             return res.status(404).json({ success: false, message: "Unable to create new post" })
         }
