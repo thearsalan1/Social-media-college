@@ -393,3 +393,21 @@
 {"http_code":403,"level":"\u001b[31merror\u001b[39m","message":"Server returned unexpected status code - 403","name":"UnexpectedResponse","timestamp":"2026-07-27T05:03:09.078Z"}
 {"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-00.x4btgnq.mongodb.net","timestamp":"2026-07-27T05:04:31.952Z"}
 {"http_code":403,"level":"\u001b[31merror\u001b[39m","message":"Server returned unexpected status code - 403","name":"UnexpectedResponse","timestamp":"2026-07-27T08:52:06.055Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-02.x4btgnq.mongodb.net","timestamp":"2026-07-27T08:55:08.786Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-01.x4btgnq.mongodb.net","timestamp":"2026-07-27T09:12:51.255Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-01.x4btgnq.mongodb.net","timestamp":"2026-07-27T09:14:07.953Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-00.x4btgnq.mongodb.net","timestamp":"2026-07-27T09:18:53.539Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-02.x4btgnq.mongodb.net","timestamp":"2026-07-27T09:19:03.563Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-01.x4btgnq.mongodb.net","timestamp":"2026-07-27T09:19:17.904Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-01.x4btgnq.mongodb.net","timestamp":"2026-07-27T09:24:22.345Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-00.x4btgnq.mongodb.net","timestamp":"2026-07-27T09:24:36.367Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-00.x4btgnq.mongodb.net","timestamp":"2026-07-27T09:24:45.074Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-02.x4btgnq.mongodb.net","timestamp":"2026-07-27T09:25:03.789Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-01.x4btgnq.mongodb.net","timestamp":"2026-07-27T09:25:29.664Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-00.x4btgnq.mongodb.net","timestamp":"2026-07-27T09:25:59.209Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-00.x4btgnq.mongodb.net","timestamp":"2026-07-27T12:12:38.934Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-02.x4btgnq.mongodb.net","timestamp":"2026-07-27T12:23:44.867Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Post updated","postId":"6a672251da5fdea121552d86","timestamp":"2026-07-27T12:25:21.292Z"}
+{"kind":"ObjectId","message":"Cast to ObjectId failed for value \"{ postId: '6a66d1f5d0de05647540bd5c' }\" (type Object) at path \"_id\" for model \"SocialPost\"","name":"CastError","path":"_id","reason":{},"stringValue":"\"{ postId: '6a66d1f5d0de05647540bd5c' }\"","value":{"postId":"6a66d1f5d0de05647540bd5c"},"valueType":"Object"}
+{"kind":"ObjectId","message":"Cast to ObjectId failed for value \"{ postId: '6a66d1f5d0de05647540bd5c' }\" (type Object) at path \"_id\" for model \"SocialPost\"","name":"CastError","path":"_id","reason":{},"stringValue":"\"{ postId: '6a66d1f5d0de05647540bd5c' }\"","value":{"postId":"6a66d1f5d0de05647540bd5c"},"valueType":"Object"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-00.x4btgnq.mongodb.net","timestamp":"2026-07-27T12:29:55.288Z"}

@@ -34,6 +34,7 @@ router.patch(
   "/posts/:postId",
   authMiddleware,
   checkOwnership(SocialPost, "postId"),
+  uploadImage.array("images", 5),
   sanitizeInput(["content"]),
   updatePost,
 );

@@ -1,7 +1,4 @@
 import "dotenv/config";
-console.log(
-  process.env.CLOUDINARY_CLOUD_NAME,
-);
 
 import helmet from "helmet";
 import express, { Request, Response } from "express";

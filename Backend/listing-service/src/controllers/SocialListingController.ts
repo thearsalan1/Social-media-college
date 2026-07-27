@@ -9,12 +9,10 @@ export const createSocialPost = async (req: Request, res: Response) => {
   const files = req.files as Express.Multer.File[] | undefined;
   try {
     if (!userId || !collegeName || !branch) {
-      return res
-        .status(400)
-        .json({
-          success: false,
-          message: "User need to be authenticated first",
-        });
+      return res.status(400).json({
+        success: false,
+        message: "User need to be authenticated first",
+      });
     }
     if (!content || content.length === 0) {
       return res
@@ -110,54 +108,54 @@ export const getPostById = async (req: Request, res: Response) => {
 
 export const updatePost = async (req: Request, res: Response) => {
   const { postId } = req.params;
-  const { content, image } = req.body;
-  const { userId } = req.user!;
+  const { content } = req.body;
+  const files = req.files as Express.Multer.File[] | undefined;
+
   try {
-    if (!postId) {
-      return res
-        .status(400)
-        .json({ success: false, message: "Post id not found" });
+    if (!content && (!files || files.length === 0)) {
+      return res.status(400).json({
+        success: false,
+        message: "Provide content or image to update",
+      });
     }
-    if (!content && !image) {
-      return res
-        .status(400)
-        .json({
-          success: false,
-          message: "Provide content or image to update",
-        });
+
+    const updateData: Record<string, any> = {};
+
+    if (content) {
+      updateData.content = content;
     }
-    if (!userId) {
-      return res
-        .status(400)
-        .json({ success: false, message: "User id not found" });
+
+    if (files && files.length > 0) {
+      const imageUrls = await uploadMultipleImages(files, "social-posts");
+      updateData.image = imageUrls;
     }
-    const post = await SocialPost.findOne({ _id: postId });
+
+    const post = await SocialPost.findOneAndUpdate(
+      { _id: postId },
+      updateData,
+      { new: true },
+    );
+
     if (!post) {
       return res
         .status(404)
         .json({ success: false, message: "Post not found" });
     }
-    if (content) {
-      post.content = content;
-    }
-    if (image) {
-      post.image = image;
-    }
-    const updatedPost = await post.save();
-    return res.status(200).json({
-      success: true,
-      message: "Post updated successfully",
-      data: updatedPost,
-    });
+
+    logger.info("Post updated", { postId });
+    return res.status(200).json({ success: true, post });
   } catch (error) {
-    logger.error(error);
-    res.status(500).json({ success: false, message: "Internal server error" });
+    logger.error("Update post failed", { error });
+    return res
+      .status(500)
+      .json({ success: false, message: "Failed to update post" });
   }
 };
 
 export const deletePost = async (req: Request, res: Response) => {
   const { postId } = req.params;
   const { userId } = req.user!;
+
   try {
     if (!postId) {
       return res
@@ -169,18 +167,23 @@ export const deletePost = async (req: Request, res: Response) => {
         .status(400)
         .json({ success: false, message: "User id not found" });
     }
-    const post = await SocialPost.findById({ postId });
+
+    // ✅ Pass the raw string, not an object
+    const post = await SocialPost.findById(postId);
     if (!post) {
       return res
         .status(404)
         .json({ success: false, message: "Post not found" });
     }
-    const deletedPost = await SocialPost.findByIdAndDelete({ _id: postId });
+
+    // ✅ Same here, just pass the id string
+    const deletedPost = await SocialPost.findByIdAndDelete(postId);
     if (!deletedPost) {
       return res
         .status(404)
         .json({ success: false, message: "Post not found" });
     }
+
     return res.status(200).json({
       success: true,
       message: "Post deleted successfully",

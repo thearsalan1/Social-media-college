@@ -1,6 +1,5 @@
 import { v2 as cloudinary } from "cloudinary";
 
-console.log("preRunning");
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -8,6 +7,5 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-console.log("Postrunning");
 
 export default cloudinary;
