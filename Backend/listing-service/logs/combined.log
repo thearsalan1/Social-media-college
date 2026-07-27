@@ -343,3 +343,53 @@
 {"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-01.x4btgnq.mongodb.net","timestamp":"2026-07-26T15:24:06.808Z"}
 {"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-00.x4btgnq.mongodb.net","timestamp":"2026-07-26T15:25:08.423Z"}
 {"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-02.x4btgnq.mongodb.net","timestamp":"2026-07-26T15:29:37.048Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-02.x4btgnq.mongodb.net","timestamp":"2026-07-26T15:34:08.673Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-02.x4btgnq.mongodb.net","timestamp":"2026-07-26T15:47:14.051Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-02.x4btgnq.mongodb.net","timestamp":"2026-07-26T16:10:55.020Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-00.x4btgnq.mongodb.net","timestamp":"2026-07-27T03:13:44.549Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-00.x4btgnq.mongodb.net","timestamp":"2026-07-27T03:21:22.835Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-00.x4btgnq.mongodb.net","timestamp":"2026-07-27T03:23:25.531Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-01.x4btgnq.mongodb.net","timestamp":"2026-07-27T03:23:55.138Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-02.x4btgnq.mongodb.net","timestamp":"2026-07-27T03:26:09.585Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-02.x4btgnq.mongodb.net","timestamp":"2026-07-27T03:33:07.923Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-01.x4btgnq.mongodb.net","timestamp":"2026-07-27T03:33:51.460Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-01.x4btgnq.mongodb.net","timestamp":"2026-07-27T03:35:14.264Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-00.x4btgnq.mongodb.net","timestamp":"2026-07-27T03:36:32.406Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-02.x4btgnq.mongodb.net","timestamp":"2026-07-27T03:36:41.053Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-00.x4btgnq.mongodb.net","timestamp":"2026-07-27T03:36:52.406Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-00.x4btgnq.mongodb.net","timestamp":"2026-07-27T03:37:12.850Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-02.x4btgnq.mongodb.net","timestamp":"2026-07-27T03:37:29.241Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-00.x4btgnq.mongodb.net","timestamp":"2026-07-27T03:37:44.608Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-02.x4btgnq.mongodb.net","timestamp":"2026-07-27T03:37:55.363Z"}
+{"http_code":403,"level":"\u001b[31merror\u001b[39m","message":"Server returned unexpected status code - 403","name":"UnexpectedResponse","timestamp":"2026-07-27T03:40:47.113Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-02.x4btgnq.mongodb.net","timestamp":"2026-07-27T03:41:20.183Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-02.x4btgnq.mongodb.net","timestamp":"2026-07-27T03:43:00.510Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-00.x4btgnq.mongodb.net","timestamp":"2026-07-27T03:43:21.090Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-02.x4btgnq.mongodb.net","timestamp":"2026-07-27T03:58:41.486Z"}
+{"http_code":403,"level":"\u001b[31merror\u001b[39m","message":"Server returned unexpected status code - 403","name":"UnexpectedResponse","timestamp":"2026-07-27T03:59:23.729Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-01.x4btgnq.mongodb.net","timestamp":"2026-07-27T04:00:31.999Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-02.x4btgnq.mongodb.net","timestamp":"2026-07-27T04:01:18.519Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-01.x4btgnq.mongodb.net","timestamp":"2026-07-27T04:01:27.729Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-02.x4btgnq.mongodb.net","timestamp":"2026-07-27T04:01:36.831Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-01.x4btgnq.mongodb.net","timestamp":"2026-07-27T04:01:52.213Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-00.x4btgnq.mongodb.net","timestamp":"2026-07-27T04:02:04.865Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-01.x4btgnq.mongodb.net","timestamp":"2026-07-27T04:02:36.757Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-00.x4btgnq.mongodb.net","timestamp":"2026-07-27T04:03:39.793Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-00.x4btgnq.mongodb.net","timestamp":"2026-07-27T04:08:10.210Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-01.x4btgnq.mongodb.net","timestamp":"2026-07-27T04:10:19.700Z"}
+{"http_code":403,"level":"\u001b[31merror\u001b[39m","message":"Server returned unexpected status code - 403","name":"UnexpectedResponse","timestamp":"2026-07-27T04:10:28.790Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-01.x4btgnq.mongodb.net","timestamp":"2026-07-27T04:12:09.170Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-00.x4btgnq.mongodb.net","timestamp":"2026-07-27T04:12:15.316Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-01.x4btgnq.mongodb.net","timestamp":"2026-07-27T04:12:26.423Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-00.x4btgnq.mongodb.net","timestamp":"2026-07-27T04:12:38.545Z"}
+{"http_code":403,"level":"\u001b[31merror\u001b[39m","message":"Server returned unexpected status code - 403","name":"UnexpectedResponse","timestamp":"2026-07-27T04:12:47.456Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-02.x4btgnq.mongodb.net","timestamp":"2026-07-27T04:25:58.908Z"}
+{"http_code":403,"level":"\u001b[31merror\u001b[39m","message":"Server returned unexpected status code - 403","name":"UnexpectedResponse","timestamp":"2026-07-27T04:26:25.097Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-00.x4btgnq.mongodb.net","timestamp":"2026-07-27T04:28:25.144Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-02.x4btgnq.mongodb.net","timestamp":"2026-07-27T04:31:18.775Z"}
+{"http_code":403,"level":"\u001b[31merror\u001b[39m","message":"Server returned unexpected status code - 403","name":"UnexpectedResponse","timestamp":"2026-07-27T04:33:27.088Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-02.x4btgnq.mongodb.net","timestamp":"2026-07-27T04:49:29.134Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-02.x4btgnq.mongodb.net","timestamp":"2026-07-27T05:02:45.179Z"}
+{"http_code":403,"level":"\u001b[31merror\u001b[39m","message":"Server returned unexpected status code - 403","name":"UnexpectedResponse","timestamp":"2026-07-27T05:03:09.078Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"MongoDB Connected: ac-ozmbgvt-shard-00-00.x4btgnq.mongodb.net","timestamp":"2026-07-27T05:04:31.952Z"}
+{"http_code":403,"level":"\u001b[31merror\u001b[39m","message":"Server returned unexpected status code - 403","name":"UnexpectedResponse","timestamp":"2026-07-27T08:52:06.055Z"}

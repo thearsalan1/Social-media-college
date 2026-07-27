@@ -1,13 +1,19 @@
-import helmet from "helmet";
 import "dotenv/config";
+console.log(
+  process.env.CLOUDINARY_CLOUD_NAME,
+);
+
+import helmet from "helmet";
 import express, { Request, Response } from "express";
 import cors from "cors";
 import { connection } from "./src/config/redis.js";
 import { connectDB } from "./src/config/db.js";
-import SocialListingRouter from "./src/routes/SocialListing.routes.js"
+import SocialListingRouter from "./src/routes/SocialListing.routes.js";
+import cookieParser from "cookie-parser";
 
 const app = express();
 app.use(helmet());
+app.use(cookieParser());
 app.use(
   cors({
     origin: process.env.FRONTEND_URL || "http://localhost:5173",
@@ -15,7 +21,7 @@ app.use(
   }),
 );
 app.use(express.json());
-app.use("/listing", SocialListingRouter);
+app.use("/listings", SocialListingRouter);
 
 app.use("/health", (req: Request, res: Response) => {
   res

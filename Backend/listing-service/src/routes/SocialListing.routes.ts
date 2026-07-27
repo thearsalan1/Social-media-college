@@ -7,22 +7,23 @@ import { uploadImage } from "../config/multer.js";
 import { createSocialPostSchema } from "../validator/listing.validator.js";
 import { SocialPost } from "../models/SocialPost.model.js";
 import {
-    createSocialPost,
-    getAllPosts,
-    getMyPosts,
-    getPostById,
-    updatePost,
-    deletePost,
+  createSocialPost,
+  getAllPosts,
+  getMyPosts,
+  getPostById,
+  updatePost,
+  deletePost,
 } from "../controllers/SocialListingController.js";
 
 const router = Router();
 
 router.post(
-    "/posts",
-    authMiddleware,
-    sanitizeInput(["content"]),
-    validate(createSocialPostSchema),
-    createSocialPost
+  "/posts",
+  authMiddleware,
+  uploadImage.array("images", 5),
+  sanitizeInput(["content"]),
+  validate(createSocialPostSchema),
+  createSocialPost,
 );
 
 router.get("/posts/my", authMiddleware, getMyPosts);
@@ -30,13 +31,18 @@ router.get("/posts/:postId", authMiddleware, getPostById);
 router.get("/posts", authMiddleware, getAllPosts);
 
 router.patch(
-    "/posts/:postId",
-    authMiddleware,
-    checkOwnership(SocialPost),
-    sanitizeInput(["content"]),
-    updatePost
+  "/posts/:postId",
+  authMiddleware,
+  checkOwnership(SocialPost, "postId"),
+  sanitizeInput(["content"]),
+  updatePost,
 );
 
-router.delete("/posts/:postId", authMiddleware, checkOwnership(SocialPost), deletePost);
+router.delete(
+  "/posts/:postId",
+  authMiddleware,
+  checkOwnership(SocialPost, "postId"),
+  deletePost,
+);
 
 export default router;

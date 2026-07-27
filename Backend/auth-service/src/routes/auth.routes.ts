@@ -56,7 +56,7 @@ router.post(
 router.post(
   "/logout",
   authMiddleware,
-  createRateLimiter({ windowInSeconds: 60 * 60, maxRequests: 3 }),
+  // createRateLimiter({ windowInSeconds: 60 * 60, maxRequests: 3 }),
   logOut,
 );
 router.post(

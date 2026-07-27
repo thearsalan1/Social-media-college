@@ -42,3 +42,16 @@
 {"collegeId":"BTECHCS230098","ip":"::1","level":"info","message":"Login successful","timestamp":"2026-07-24T10:40:06.638Z","userId":"425326c7-3e42-4fdf-b0d7-c1b69dde283b"}
 {"level":"info","message":"Cleanup: 0 unverified users removed","timestamp":"2026-07-25T10:54:30.171Z"}
 {"level":"info","message":"Cleanup: 0 unverified users removed","timestamp":"2026-07-26T09:10:31.903Z"}
+{"collegeId":"BTECHCS230098","ip":"::1","level":"info","message":"Login successful","timestamp":"2026-07-26T15:48:07.066Z","userId":"425326c7-3e42-4fdf-b0d7-c1b69dde283b"}
+{"level":"info","message":"Cleanup: 0 unverified users removed","timestamp":"2026-07-27T03:15:03.561Z"}
+{"collegeId":"BTECHCS230098","ip":"::1","level":"info","message":"Login successful","timestamp":"2026-07-27T03:15:44.464Z","userId":"425326c7-3e42-4fdf-b0d7-c1b69dde283b"}
+{"collegeId":"BTECHCS230098","ip":"::1","level":"info","message":"Login successful","timestamp":"2026-07-27T03:21:54.948Z","userId":"425326c7-3e42-4fdf-b0d7-c1b69dde283b"}
+{"level":"info","message":"User logged out","timestamp":"2026-07-27T03:22:18.940Z","userId":"425326c7-3e42-4fdf-b0d7-c1b69dde283b"}
+{"collegeId":"BTECHCS230098","ip":"::1","level":"info","message":"Login successful","timestamp":"2026-07-27T03:22:26.469Z","userId":"425326c7-3e42-4fdf-b0d7-c1b69dde283b"}
+{"level":"info","message":"User logged out","timestamp":"2026-07-27T03:30:28.701Z","userId":"425326c7-3e42-4fdf-b0d7-c1b69dde283b"}
+{"collegeId":"BTECHCS230098","ip":"::1","level":"info","message":"Login successful","timestamp":"2026-07-27T03:32:09.242Z","userId":"425326c7-3e42-4fdf-b0d7-c1b69dde283b"}
+{"collegeId":"BTECHCS230098","ip":"::1","level":"info","message":"Login successful","timestamp":"2026-07-27T03:59:05.808Z","userId":"425326c7-3e42-4fdf-b0d7-c1b69dde283b"}
+{"collegeId":"BTECHCS230098","ip":"::1","level":"info","message":"Login successful","timestamp":"2026-07-27T04:26:14.705Z","userId":"425326c7-3e42-4fdf-b0d7-c1b69dde283b"}
+{"collegeId":"BTECHCS230098","ip":"::1","level":"info","message":"Login successful","timestamp":"2026-07-27T04:33:19.743Z","userId":"425326c7-3e42-4fdf-b0d7-c1b69dde283b"}
+{"collegeId":"BTECHCS230098","ip":"::1","level":"info","message":"Login successful","timestamp":"2026-07-27T05:03:02.491Z","userId":"425326c7-3e42-4fdf-b0d7-c1b69dde283b"}
+{"collegeId":"BTECHCS230098","ip":"::1","level":"info","message":"Login successful","timestamp":"2026-07-27T08:51:56.171Z","userId":"425326c7-3e42-4fdf-b0d7-c1b69dde283b"}
