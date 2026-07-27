@@ -27,7 +27,18 @@ const marketPlaceSchema = new mongoose.Schema<MarketPlaceInterface>(
       required: true,
       enum: Object.values(ItemCategory),
     },
-    image: [{ type: String }],
+    images: [
+      {
+        url: {
+          type: String,
+          required: true,
+        },
+        publicId: {
+          type: String,
+          required: true,
+        },
+      },
+    ],
     status: {
       type: String,
       enum: Object.values(itemStatus),

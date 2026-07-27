@@ -1,18 +1,24 @@
 import { Request, Response } from "express";
 import { SocialPost } from "../models/SocialPost.model.js";
 import { logger } from "../config/logger.js";
-import { uploadMultipleImages } from "../utils/uploadToCloudinary.js";
+import {
+  deleteFromCloudinary,
+  uploadMultipleImages,
+} from "../utils/uploadToCloudinary.js";
 
 export const createSocialPost = async (req: Request, res: Response) => {
   const { content } = req.body;
   const { userId, collegeName, branch, name } = req.user!;
   const files = req.files as Express.Multer.File[] | undefined;
+
   try {
-    if (!userId || !collegeName || !branch) {
-      return res.status(400).json({
-        success: false,
-        message: "User need to be authenticated first",
-      });
+    if (!userId || !collegeName || !branch || !name) {
+      return res
+        .status(400)
+        .json({
+          success: false,
+          message: "User need to be authenticated first",
+        });
     }
     if (!content || content.length === 0) {
       return res
@@ -22,23 +28,27 @@ export const createSocialPost = async (req: Request, res: Response) => {
     if (!files || files.length <= 0) {
       return res.status(404).json({ success: false, message: "Image needed" });
     }
-    let imageUrls: string[] = [];
+
+    let images: { url: string; publicId: string }[] = [];
     if (files && files.length > 0) {
-      imageUrls = await uploadMultipleImages(files, "social-posts");
+      images = await uploadMultipleImages(files, "social-posts");
     }
+
     const newPost = await SocialPost.create({
       content,
-      image: imageUrls,
+      images,
       userId,
       userName: name,
       collegeName,
       branch,
     });
+
     if (!newPost) {
       return res
         .status(404)
         .json({ success: false, message: "Unable to create new post" });
     }
+
     return res.status(201).json({
       success: true,
       message: "Post created successfully",
@@ -119,6 +129,13 @@ export const updatePost = async (req: Request, res: Response) => {
       });
     }
 
+    const post = await SocialPost.findById(postId);
+    if (!post) {
+      return res
+        .status(404)
+        .json({ success: false, message: "Post not found" });
+    }
+
     const updateData: Record<string, any> = {};
 
     if (content) {
@@ -126,24 +143,30 @@ export const updatePost = async (req: Request, res: Response) => {
     }
 
     if (files && files.length > 0) {
-      const imageUrls = await uploadMultipleImages(files, "social-posts");
-      updateData.image = imageUrls;
+      if (post.images && post.images.length > 0) {
+        for (const img of post.images) {
+          await deleteFromCloudinary(img.publicId);
+        }
+      }
+
+      const uploadedImages = await uploadMultipleImages(files, "social-posts");
+      updateData.images = uploadedImages;
     }
 
-    const post = await SocialPost.findOneAndUpdate(
+    const updatedPost = await SocialPost.findOneAndUpdate(
       { _id: postId },
       updateData,
       { new: true },
     );
 
-    if (!post) {
+    if (!updatedPost) {
       return res
         .status(404)
         .json({ success: false, message: "Post not found" });
     }
 
     logger.info("Post updated", { postId });
-    return res.status(200).json({ success: true, post });
+    return res.status(200).json({ success: true, post: updatedPost });
   } catch (error) {
     logger.error("Update post failed", { error });
     return res
@@ -168,7 +191,6 @@ export const deletePost = async (req: Request, res: Response) => {
         .json({ success: false, message: "User id not found" });
     }
 
-    // ✅ Pass the raw string, not an object
     const post = await SocialPost.findById(postId);
     if (!post) {
       return res
@@ -176,7 +198,12 @@ export const deletePost = async (req: Request, res: Response) => {
         .json({ success: false, message: "Post not found" });
     }
 
-    // ✅ Same here, just pass the id string
+    if (post.images && post.images.length > 0) {
+      for (const img of post.images) {
+        await deleteFromCloudinary(img.publicId);
+      }
+    }
+
     const deletedPost = await SocialPost.findByIdAndDelete(postId);
     if (!deletedPost) {
       return res

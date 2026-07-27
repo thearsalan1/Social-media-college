@@ -21,7 +21,10 @@ export interface MarketPlaceInterface {
   description: string;
   price: number;
   category: ItemCategory;
-  image: string[];
+  images: {
+    url: string;
+    publicId: string;
+  }[];
   status: itemStatus;
   userId: string;
   userName: string;
@@ -35,7 +38,10 @@ export interface MarketPlaceInterface {
 
 export interface socialPostInterface {
   content: string;
-  image: string[];
+  images: {
+    url: string;
+    publicId: string;
+  }[];
   userId: string;
   userName: string;
   collegeName: string;
@@ -59,7 +65,7 @@ export interface CommentInterface {
 }
 
 export interface LikeInterface {
-  userId:string,
-  targetType:targetType,
-  targetId:string
+  userId: string;
+  targetType: targetType;
+  targetId: string;
 }

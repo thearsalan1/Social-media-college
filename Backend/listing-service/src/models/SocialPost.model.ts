@@ -10,10 +10,10 @@ const socialPostSchema = new mongoose.Schema<socialPostInterface>(
       minLength: [5, "Content must be above 5 characters"],
       trim: true,
     },
-    image: [
+    images: [
       {
-        type: String,
-        required: true,
+        url: { type: String, required: true },
+        publicId: { type: String, required: true },
       },
     ],
     userId: {
@@ -37,9 +37,11 @@ const socialPostSchema = new mongoose.Schema<socialPostInterface>(
       required: true,
       default: 0,
     },
-    reportedBy: [{
-      type: String,
-    }],
+    reportedBy: [
+      {
+        type: String,
+      },
+    ],
     ishidden: {
       type: Boolean,
       required: true,
