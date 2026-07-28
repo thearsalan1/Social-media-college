@@ -11,7 +11,7 @@ const LikeSchema = new mongoose.Schema<LikeInterface>(
     targetType: {
       type: String,
       enum: Object.values(targetType),
-      default: targetType.post,
+      default: targetType.Post,
     },
     targetId: {
       type: String,
