@@ -8,7 +8,7 @@ import { ItemCategory, itemStatus } from "../types/types.js";
 import { logger } from "../config/logger.js";
 
 export const createItem = async (req: Request, res: Response) => {
-  const { title, description, price, itemCategory } = req.body;
+  const { title, description, price, category } = req.body;
   const { userId, collegeName, branch, name } = req.user!;
   const files = req.files as Express.Multer.File[] | undefined;
 
@@ -38,7 +38,7 @@ export const createItem = async (req: Request, res: Response) => {
       return Object.values(ItemCategory).includes(category);
     }
 
-    if (!isItemCategory(itemCategory)) {
+    if (!isItemCategory(category)) {
       return res.status(400).json({
         success: false,
         message: "Valid Item category needed",
@@ -52,7 +52,7 @@ export const createItem = async (req: Request, res: Response) => {
       description,
       price,
       images,
-      category: itemCategory,
+      category: category,
       status: itemStatus.Available,
       userId,
       userName: name,

@@ -7,6 +7,7 @@ import { connection } from "./src/config/redis.js";
 import { connectDB } from "./src/config/db.js";
 import SocialListingRouter from "./src/routes/SocialListing.routes.js";
 import cookieParser from "cookie-parser";
+import marketplaceRoutes from "./src/routes/marketPlace.routes.js";
 
 const app = express();
 app.use(helmet());
@@ -19,6 +20,7 @@ app.use(
 );
 app.use(express.json());
 app.use("/listings", SocialListingRouter);
+app.use("listings", marketplaceRoutes);
 
 app.use("/health", (req: Request, res: Response) => {
   res
