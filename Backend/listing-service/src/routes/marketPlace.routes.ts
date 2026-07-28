@@ -16,25 +16,64 @@ import {
 import { scopeToMiddleware } from "../middlewares/scopeToCollege.middleware.js";
 import { MarketPlaceItem } from "../models/MarketPlace.model.js";
 import { checkOwnership } from "../middlewares/checkOwnership.middleware.js";
+import { createRateLimiter } from "../middlewares/rateLimiter.middleware.js";
 
 const router = Router();
 
 router.post(
   "/marketplace",
   authMiddleware,
+  createRateLimiter({
+    windowInSeconds: 60 * 60,
+    maxRequests: 10,
+    prefix: "create-item",
+  }),
   uploadImage.array("images", 5),
   sanitizeInput(["title", "description"]),
   validate(createMarketplaceSchema),
   createItem,
 );
 
-router.get("/marketplace/my", authMiddleware, getMyItems);
-router.get("/marketplace/:item", authMiddleware, getItemsDetail);
-router.get("/marketplace", authMiddleware, scopeToMiddleware, getAllItems);
+router.get(
+  "/marketplace/my",
+  authMiddleware,
+  createRateLimiter({
+    windowInSeconds: 3600,
+    maxRequests: 200,
+    prefix: "browse",
+  }),
+  getMyItems,
+);
+router.get(
+  "/marketplace/:item",
+  authMiddleware,
+  createRateLimiter({
+    windowInSeconds: 3600,
+    maxRequests: 200,
+    prefix: "browse",
+  }),
+  getItemsDetail,
+);
+router.get(
+  "/marketplace",
+  authMiddleware,
+  createRateLimiter({
+    windowInSeconds: 3600,
+    maxRequests: 200,
+    prefix: "browse",
+  }),
+  scopeToMiddleware,
+  getAllItems,
+);
 
 router.patch(
   "/marketplace/:itemId",
   authMiddleware,
+  createRateLimiter({
+    windowInSeconds: 3600,
+    maxRequests: 20,
+    prefix: "edit-item",
+  }),
   checkOwnership(MarketPlaceItem, "itemId"),
   uploadImage.array("images", 5),
   sanitizeInput(["title", "description"]),
