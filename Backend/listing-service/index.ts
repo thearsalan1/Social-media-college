@@ -8,7 +8,7 @@ import { connectDB } from "./src/config/db.js";
 import SocialListingRouter from "./src/routes/SocialListing.routes.js";
 import cookieParser from "cookie-parser";
 import marketplaceRoutes from "./src/routes/marketPlace.routes.js";
-
+import commentsRoutes from "./src/routes/Comments.route.js"
 const app = express();
 app.use(helmet());
 app.use(cookieParser());
@@ -21,6 +21,7 @@ app.use(
 app.use(express.json());
 app.use("/listings", SocialListingRouter);
 app.use("listings", marketplaceRoutes);
+app.use("listings", commentsRoutes);
 
 app.use("/health", (req: Request, res: Response) => {
   res

@@ -24,7 +24,7 @@ const CommentSchema = new mongoose.Schema<CommentInterface>(
       type: String,
       required: true,
       enum: Object.values(targetType),
-      default: targetType.post,
+      default: targetType.Post,
     },
     targetId: {
       type: String,
