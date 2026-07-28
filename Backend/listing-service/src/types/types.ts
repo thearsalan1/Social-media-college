@@ -14,6 +14,7 @@ export enum itemStatus {
 export enum targetType {
   MarketPlace = "MARKETPLACE",
   Post = "POST",
+  Comment = "COMMENT",
 }
 
 export interface MarketPlaceInterface {

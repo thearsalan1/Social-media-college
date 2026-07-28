@@ -10,6 +10,8 @@ import cookieParser from "cookie-parser";
 import marketplaceRoutes from "./src/routes/marketPlace.routes.js";
 import commentsRoutes from "./src/routes/Comments.route.js";
 import likeRoutes from "./src/routes/like.routes.js";
+import reportRoutes from "./src/routes/report.routes.js";
+
 const app = express();
 app.use(helmet());
 app.use(cookieParser());
@@ -21,9 +23,10 @@ app.use(
 );
 app.use(express.json());
 app.use("/listings", SocialListingRouter);
-app.use("listings", marketplaceRoutes);
-app.use("listings", commentsRoutes);
-app.use("listings", likeRoutes);
+app.use("/listings", marketplaceRoutes);
+app.use("/listings", commentsRoutes);
+app.use("/listings", likeRoutes);
+app.use("/listings", reportRoutes);
 
 app.use("/health", (req: Request, res: Response) => {
   res

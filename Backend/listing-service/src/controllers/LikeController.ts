@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { getModelByTargetType } from "../middlewares/getModelByTargetType.js";
 import { Like } from "../models/Likes.Model.js";
 import { targetType as TargetTypeEnum } from "../types/types.js";
+import { logger } from "../config/logger.js";
 
 export const toggleLike = async (req: Request, res: Response) => {
   const { targetId, targetType } = req.body;
@@ -40,8 +41,7 @@ export const toggleLike = async (req: Request, res: Response) => {
         .json({ success: true, liked: true, message: "Liked successfully" });
     }
   } catch (error) {
-    return res
-      .status(500)
-      .json({ success: false, message: "Server error", error });
+    logger.error("Toggle like failed", { error }); // logger import bhi karna hoga
+    return res.status(500).json({ success: false, message: "Server error" });
   }
 };

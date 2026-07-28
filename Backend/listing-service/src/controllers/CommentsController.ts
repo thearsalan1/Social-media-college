@@ -14,23 +14,17 @@ const normalizeParam = (
 
 // ✅ Create Comment
 export const createComment = async (req: Request, res: Response) => {
-  const { content, targetType } = req.body;
-  let targetId = normalizeParam(req.params.targetId);
+  const { content, targetType, targetId } = req.body;
   const { userId, name } = req.user!;
 
   try {
-    if (!content || !targetType) {
+    if (!content || !targetType || !targetId) {
       return res.status(400).json({ success: false, message: "Data needed" });
     }
     if (!Object.values(TargetTypeEnum).includes(targetType)) {
       return res
         .status(400)
         .json({ success: false, message: "Target type invalid" });
-    }
-    if (!targetId) {
-      return res
-        .status(400)
-        .json({ success: false, message: "Target id needed" });
     }
 
     const Model = getModelByTargetType(targetType as TargetTypeEnum);
