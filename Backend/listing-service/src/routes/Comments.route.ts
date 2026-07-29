@@ -22,13 +22,21 @@ router.post(
     maxRequests: 30,
     prefix: "create-comment",
   }),
-
   sanitizeInput(["content"]),
   validate(createCommentSchema),
   createComment,
 );
 
-router.get("/comments/:targetType/:targetId", authMiddleware, getAllComments);
+router.get(
+  "/comments/:targetType/:targetId",
+  authMiddleware,
+  createRateLimiter({
+    windowInSeconds: 3600,
+    maxRequests: 200,
+    prefix: "browse",
+  }),
+  getAllComments,
+);
 
 router.delete(
   "/comment/:id",

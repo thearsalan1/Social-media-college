@@ -21,6 +21,7 @@ router.post(
   }),
   reportContent,
 );
+
 router.patch(
   "/admin/unban/:targetType/:targetId",
   authMiddleware,

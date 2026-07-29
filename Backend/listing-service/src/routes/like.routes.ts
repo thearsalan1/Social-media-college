@@ -13,5 +13,6 @@ router.post(
     maxRequests: 100,
     prefix: "like-toggle",
   }),
+  toggleLike,
 );
 export default router;

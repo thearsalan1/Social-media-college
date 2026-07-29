@@ -45,7 +45,7 @@ router.get(
   getMyItems,
 );
 router.get(
-  "/marketplace/:item",
+  "/marketplace/:itemId",
   authMiddleware,
   createRateLimiter({
     windowInSeconds: 3600,
@@ -83,6 +83,11 @@ router.patch(
 router.delete(
   "/marketplace/:itemId",
   authMiddleware,
+  createRateLimiter({
+    windowInSeconds: 3600,
+    maxRequests: 20,
+    prefix: "edit-item",
+  }),
   checkOwnership(MarketPlaceItem, "itemId"),
   deleteItem,
 );
@@ -90,6 +95,11 @@ router.delete(
 router.patch(
   "/marketplace/:itemId/status",
   authMiddleware,
+  createRateLimiter({
+    windowInSeconds: 3600,
+    maxRequests: 20,
+    prefix: "edit-item",
+  }),
   checkOwnership(MarketPlaceItem, "itemId"),
   toggleItemStatus,
 );
