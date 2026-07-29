@@ -3,8 +3,8 @@ import express, { Request, Response } from "express";
 import cors from "cors";
 import helmet from "helmet";
 import cookieParser from "cookie-parser";
-import { connection } from "./src/config/redis";
-import { logger } from "./src/config/logger";
+import { connection } from "./src/config/redis.js";
+import { logger } from "./src/config/logger.js";
 
 const app = express();
 app.use(cookieParser());

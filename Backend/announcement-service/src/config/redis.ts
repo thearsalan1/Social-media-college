@@ -1,5 +1,5 @@
 import { Redis } from "ioredis";
-import { logger } from "./logger";
+import { logger } from "./logger.js";
 export const connection = new Redis(process.env.REDIS_URL!, {
   maxRetriesPerRequest: null,
   enableReadyCheck: false,

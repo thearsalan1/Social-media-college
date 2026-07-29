@@ -1,12 +1,12 @@
-import { notificationQueue } from "./../queue/notification.queue";
-import { prisma } from "./../db/pisma";
+import { notificationQueue } from "./../queue/notification.queue.js";
+import { prisma } from "./../db/pisma.js";
 import { Request, Response } from "express";
 import {
   deleteFromCloudinary,
   uploadMultipleImages,
-} from "../utils/uploadToCloudinary";
-import { logger } from "../config/logger";
-import { normalizeParam } from "../utils/normalizeParams";
+} from "../utils/uploadToCloudinary.js";
+import { logger } from "../config/logger.js";
+import { normalizeParam } from "../utils/normalizeParams.js";
 
 export const createAnnouncement = async (req: Request, res: Response) => {
   const { title, content, type, branch, expiresAt } = req.body;
@@ -206,25 +206,74 @@ export const togglePinned = async (req: Request, res: Response) => {
 
 export const getAllAnnouncements = async (req: Request, res: Response) => {
   try {
-    const announcements = await prisma.announcement.findMany();
-    if (!announcements) {
-      return res
-        .status(400)
-        .json({ success: false, message: "Announcements not found" });
+    const { type, branch, page = 1, limit = 10, collegeId } = req.query;
+
+    const filters: any = {
+      collegeId: collegeId ? Number(collegeId) : undefined,
+      type: type || undefined,
+    };
+
+    if (branch) {
+      filters.branch = branch;
     }
+
+    filters.OR = [
+      { expiresAt: null },
+      { expiresAt: { gt: new Date() } },
+    ];
+
+    const announcements = await prisma.announcement.findMany({
+      where: filters,
+      orderBy: [
+        { isPinned: "desc" },
+        { createdAt: "desc" },
+      ],
+      skip: (Number(page) - 1) * Number(limit),
+      take: Number(limit),
+    });
+
     if (announcements.length === 0) {
-      return res
-        .status(200)
-        .json({ success: false, message: "Announcements not available" });
+      return res.status(200).json({
+        success: false,
+        message: "Announcements not available",
+      });
     }
-    logger.info(`Annoucements found are ${announcements.length}`);
+
+    logger.info(`Announcements found: ${announcements.length}`);
     res.status(200).json({
-      success: false,
+      success: true,
       message: "Announcements found",
       data: announcements,
     });
   } catch (error) {
-    logger.error(`Error in finding announcements ${error}`);
+    logger.error(`Error in finding announcements: ${error}`);
+    res.status(500).json({ success: false, message: "Internal server error" });
+  }
+};
+
+
+export const getAnnouncementWithId = async (req: Request, res: Response) => {
+  const id = normalizeParam(req.params.id);
+  try {
+    if (!id) {
+      return res
+        .status(400)
+        .json({ success: false, message: "Announcement Id needed" });
+    }
+    const announcement = await prisma.announcement.findUnique({
+      where: { id },
+    });
+    if (!announcement) {
+      return res
+        .status(400)
+        .json({ success: false, message: "Announcement not found" });
+    }
+    logger.info(`Announcement found ${announcement}`);
+    return res
+      .status(200)
+      .json({ success: true, message: "Announcement found" });
+  } catch (error) {
+    logger.error(`Error in finding announcement ${error}`);
     res.status(500).json({ success: false, message: "Internal server error" });
   }
 };
