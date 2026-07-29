@@ -1,0 +1,590 @@
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:14:00.910Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:14:21.069Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:14:21.185Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:14:31.252Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:14:31.372Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:14:38.522Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:14:38.753Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:15:47.113Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:15:47.359Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:16:07.849Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:16:08.049Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:16:18.376Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:16:18.514Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:16:25.974Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:16:26.102Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:16:29.603Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:16:29.849Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:16:34.318Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:16:36.035Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:16:36.154Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:16:40.968Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:16:41.088Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:16:44.122Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:16:44.245Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:17:08.993Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:17:10.575Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:17:10.711Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:17:13.231Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:17:13.364Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:17:15.374Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:17:15.490Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:17:16.989Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:17:17.108Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:17:25.063Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:17:25.171Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:17:31.257Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:17:31.391Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:17:38.441Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:17:38.671Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:17:45.458Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:17:45.591Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:17:48.146Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:17:48.271Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:17:51.659Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:17:51.790Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:17:53.358Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:17:53.516Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:17:55.540Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:17:55.650Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:18:09.381Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:18:09.591Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:18:19.745Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:18:19.991Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:18:31.701Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:18:32.970Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:18:33.095Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:18:37.448Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:18:37.559Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:18:39.292Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:18:39.424Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:18:43.541Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:18:43.658Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:18:45.415Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:18:45.531Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:18:51.989Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:18:52.124Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:18:59.122Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:18:59.244Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:19:11.155Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:19:11.648Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:19:54.531Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:19:54.666Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:19:58.045Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:19:58.173Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:20:47.147Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:20:47.389Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:21:11.678Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:21:12.136Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:21:16.481Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:21:16.609Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:21:21.315Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:21:21.409Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:21:55.219Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:21:55.337Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:21:58.569Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:21:58.724Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:22:08.133Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:22:08.390Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:22:35.252Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:22:35.430Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:22:40.262Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:22:40.386Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:23:23.810Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:23:23.930Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:23:28.949Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:23:29.071Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:23:32.264Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:23:32.371Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:23:35.340Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:23:35.469Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:23:40.032Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:23:40.170Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:23:44.119Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:23:44.335Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:23:53.692Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:23:53.803Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:23:55.111Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:23:55.240Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:23:58.176Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:23:58.306Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:23:59.933Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:24:00.310Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:24:03.538Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:24:03.842Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:24:32.475Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:24:32.675Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:25:09.572Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:25:09.730Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:25:17.253Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:25:17.371Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:25:20.047Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:25:20.163Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:25:24.728Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:25:24.992Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:25:27.694Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:25:27.808Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:25:33.168Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:25:33.287Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:25:41.090Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:25:41.224Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:25:43.026Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:25:43.130Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:25:48.397Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:25:48.520Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:25:51.749Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:25:51.912Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:25:58.943Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:25:59.067Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:26:44.821Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:26:45.019Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:26:52.297Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:26:52.416Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:26:54.497Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:26:54.701Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:26:58.529Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:26:58.896Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:27:02.103Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:27:02.345Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:27:12.254Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:27:12.382Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:27:29.754Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:27:29.922Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:27:37.941Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:27:38.067Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:27:40.124Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:27:40.241Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:27:53.074Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:27:53.198Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:28:00.259Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:28:00.380Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:28:09.136Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:28:09.257Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:28:12.878Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:28:13.042Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:28:16.527Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:28:16.716Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:28:24.639Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:28:24.910Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:28:28.659Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:28:28.771Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:29:50.430Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:29:50.584Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:32:10.808Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:32:12.473Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:32:12.589Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:32:50.430Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:32:50.572Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:32:52.895Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:32:53.029Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:32:58.992Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:32:59.184Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:35:24.876Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:35:25.325Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:36:34.728Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:36:34.897Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:36:38.905Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:36:39.037Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:36:44.716Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:36:44.931Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:36:56.151Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:36:56.383Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:37:01.693Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:37:01.931Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:37:05.068Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:37:05.202Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:37:45.876Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:37:46.116Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:37:50.325Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:37:50.443Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:37:54.751Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:37:54.857Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:38:03.937Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:38:04.077Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:38:09.692Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:38:09.826Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:38:12.863Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:38:12.980Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:38:18.500Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:38:18.603Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:38:24.506Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:38:24.620Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:38:36.924Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:38:37.050Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:38:46.748Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:38:46.898Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:38:49.323Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:38:49.438Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:38:52.575Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:38:53.004Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:39:11.354Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:39:11.473Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:40:32.961Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:40:33.086Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:40:42.418Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:40:42.610Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:40:50.202Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:40:50.356Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:40:55.252Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:40:55.509Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:41:02.195Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:41:02.318Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:41:24.300Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:41:24.435Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:41:35.670Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:41:35.951Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:41:42.940Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:41:43.082Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:41:48.847Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:41:48.987Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:42:01.254Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:42:01.373Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:42:05.730Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:42:05.860Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:42:19.488Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:42:19.621Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:42:29.540Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:42:29.652Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:42:34.982Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:42:35.102Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:43:27.210Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:43:27.381Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:44:20.877Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:44:21.112Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:44:44.326Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:44:44.457Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:44:48.888Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:44:49.176Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:44:51.912Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:44:52.108Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:44:56.121Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:44:56.263Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:45:00.834Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:45:00.960Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:45:02.746Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:45:02.958Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:45:09.526Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:45:09.757Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:45:24.890Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:45:25.052Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:45:28.984Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:45:29.226Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:45:47.823Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:45:48.058Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:46:24.669Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:46:24.878Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:46:42.235Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:46:42.533Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:46:46.185Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:46:46.317Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:46:52.459Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:46:52.574Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:46:59.058Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:46:59.190Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:47:07.799Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:47:07.920Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:47:14.003Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:47:14.144Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:47:19.550Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:47:19.677Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:47:27.121Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:47:27.277Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:47:29.620Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:47:29.773Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:47:35.367Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:47:35.581Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:47:38.537Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:47:38.751Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:47:41.396Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:47:41.520Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:47:54.128Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:47:54.258Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:47:56.557Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:47:56.686Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:48:01.161Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:48:01.291Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:48:19.172Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:48:19.407Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:48:25.132Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:48:25.351Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:48:28.538Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:48:28.673Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:48:34.966Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:48:35.087Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:48:41.227Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:48:41.370Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:48:45.284Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:48:45.394Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:48:53.354Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:48:53.472Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:48:57.322Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:48:57.461Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:49:01.011Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:49:01.138Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:49:07.623Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:49:08.456Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:49:11.352Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:49:11.512Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:49:15.904Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:49:16.014Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:49:20.066Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:49:32.290Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:49:32.420Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:49:35.055Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:49:35.285Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:50:19.627Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:50:19.928Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:50:28.031Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:50:28.305Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:50:33.222Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:50:33.369Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:50:37.571Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:50:37.853Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:50:43.247Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:50:43.487Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:50:49.101Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:50:49.283Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:50:53.136Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:50:53.254Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:51:01.530Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:51:01.767Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:51:09.862Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:51:09.969Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:51:16.722Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:51:16.922Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:51:20.635Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:51:20.746Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:51:25.875Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:51:26.102Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:51:35.279Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:51:35.388Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:51:40.298Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:51:40.429Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:51:43.178Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:51:43.390Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:51:46.257Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:51:46.365Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:51:51.109Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:51:51.485Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:51:55.292Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:51:55.413Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:52:01.562Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:52:01.680Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:52:09.433Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:52:09.715Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:52:38.410Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:52:38.661Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:52:45.821Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:52:45.945Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:52:53.327Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:52:54.468Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:52:54.597Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:52:57.670Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:52:57.792Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:52:59.455Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:52:59.582Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:53:04.249Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:53:04.352Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:53:09.619Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:53:09.808Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:53:13.563Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:53:13.717Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:53:22.054Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:53:22.179Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:53:28.067Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:53:28.192Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:53:33.486Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:53:33.770Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:53:37.539Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:53:37.655Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:53:46.710Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:53:46.841Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:53:53.752Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:53:53.907Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:54:09.455Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:54:09.809Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:54:11.739Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:54:11.970Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:54:14.390Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:54:14.547Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:54:20.246Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:54:20.381Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:54:24.403Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:54:24.542Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:54:34.932Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:54:35.060Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:54:40.306Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:54:40.513Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:54:48.287Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:54:48.495Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:54:52.536Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:54:52.661Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:55:00.464Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:55:00.603Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:55:07.108Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:55:07.237Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:55:18.846Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:55:18.980Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:55:29.403Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:55:29.544Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:55:33.665Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:55:33.811Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:55:39.872Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:55:39.987Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:55:48.586Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:55:48.714Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:55:52.254Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:55:52.364Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:56:12.058Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:56:12.183Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:56:33.668Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:56:33.813Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:56:42.797Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:56:42.938Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:56:48.181Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:56:48.293Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:56:51.335Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:56:51.824Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:56:59.092Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:56:59.209Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:57:04.625Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:57:04.772Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:57:10.231Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:57:10.355Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:57:21.230Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:57:21.353Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:57:31.277Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:57:31.433Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:57:45.868Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:57:46.009Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:57:50.666Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:57:50.903Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:58:21.142Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:58:21.262Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:58:48.113Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:58:48.273Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:58:54.188Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:58:54.312Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:58:57.104Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:58:57.230Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T06:59:53.415Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T06:59:53.634Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:00:57.365Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:00:57.515Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:01:28.694Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:01:28.816Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:01:33.391Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:01:33.506Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:01:38.215Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:01:38.431Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:01:47.118Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:01:47.248Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:01:50.908Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:01:51.059Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:02:10.664Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:02:10.790Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:02:42.385Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:02:42.508Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:03:04.425Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:03:04.545Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:03:52.882Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:03:53.365Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:04:17.989Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:04:18.122Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:05:14.676Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:05:14.900Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:06:05.796Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:06:06.007Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:06:22.003Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:06:22.178Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:06:30.443Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:06:30.584Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:06:50.978Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:06:51.265Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:07:04.495Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:07:04.627Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:07:09.430Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:07:09.587Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:07:20.229Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:07:20.365Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:07:25.569Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:07:25.948Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:07:34.012Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:07:34.269Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:07:40.770Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:07:41.029Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:07:46.887Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:07:47.016Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:07:52.030Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:07:52.153Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:07:54.870Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:07:55.013Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:08:09.847Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:08:09.985Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:08:52.020Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:08:52.156Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:08:58.734Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:08:58.869Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:09:01.764Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:09:01.871Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:10:36.493Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:10:36.633Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:10:45.930Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:10:46.063Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:10:56.364Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:10:56.716Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:11:01.749Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:11:01.873Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:11:06.482Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:11:06.754Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:11:17.874Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:11:17.993Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:11:25.845Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:11:27.069Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:11:27.518Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:11:33.083Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:11:33.217Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:11:38.612Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:11:38.802Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:12:00.960Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:12:01.080Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:12:15.029Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:12:15.172Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:12:19.668Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:12:19.795Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:12:40.318Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:12:40.502Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:12:42.868Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:12:43.108Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:12:51.980Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:12:52.157Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:12:55.192Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:12:55.322Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:12:59.159Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:12:59.291Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:13:05.846Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:13:10.975Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:13:11.103Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:13:14.099Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:13:14.206Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:13:18.186Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:13:22.868Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:13:23.089Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:13:35.929Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:13:36.050Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:13:39.510Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:13:39.749Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:14:26.044Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:14:26.190Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:14:31.351Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:14:31.487Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:15:26.105Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:15:26.388Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:15:38.989Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:15:39.237Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:16:34.465Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:16:34.685Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:16:59.602Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:16:59.926Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Announcement service is running at http://localhost:5003","timestamp":"2026-07-29T07:17:07.930Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"redis connected","timestamp":"2026-07-29T07:17:08.058Z"}

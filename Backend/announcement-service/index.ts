@@ -4,8 +4,11 @@ import cors from "cors";
 import helmet from "helmet";
 import cookieParser from "cookie-parser";
 import { connection } from "./src/config/redis";
+import { logger } from "./src/config/logger";
 
 const app = express();
+app.use(cookieParser());
+app.use(express.json());
 app.use(helmet());
 app.use(
   cors({
@@ -13,8 +16,6 @@ app.use(
     credentials: true,
   }),
 );
-app.use(express.json());
-app.use(cookieParser());
 
 app.get("/health", (req: Request, res: Response) => {
   res
@@ -27,5 +28,5 @@ connection;
 const PORT = process.env.PORT || 5003;
 
 app.listen(PORT, () => {
-  console.log(`Announcement service is running at http://localhost:${PORT}`);
+  logger.info(`Announcement service is running at http://localhost:${PORT}`);
 });

@@ -1,5 +1,6 @@
-import { NextFunction, Request, Response } from "express";
+import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
+
 declare global {
   namespace Express {
     interface Request {
@@ -8,8 +9,8 @@ declare global {
         role: string;
         collegeId: string;
         collegeName: string;
-        name: string;
         branch: string;
+        name: string;
       };
     }
   }
@@ -21,9 +22,11 @@ export function authMiddleware(
   next: NextFunction,
 ) {
   const token = req.cookies?.accessToken;
+
   if (!token) {
-    return res.status(401).json({ success: false, message: "Token not found" });
+    return res.status(401).json({ success: false, message: "Token missing" });
   }
+
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET as string);
     req.user = decoded as any;
@@ -37,7 +40,7 @@ export function authMiddleware(
 
 export function requireRoles(...allowedRoles: string[]) {
   return (req: Request, res: Response, next: NextFunction) => {
-    if (!req.user?.role || allowedRoles.includes(req.user.role)) {
+    if (!req.user || !allowedRoles.includes(req.user.role)) {
       return res.status(403).json({ success: false, message: "Access denied" });
     }
     next();
