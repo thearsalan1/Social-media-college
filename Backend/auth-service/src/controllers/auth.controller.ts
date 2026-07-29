@@ -20,7 +20,7 @@ import { logger } from "../config/logger.js";
 
 export const signup = async (req: Request, res: Response) => {
   try {
-    const { collegeId, name, password, collegeName }: signupInput = req.body;
+    const { collegeId, name, password }: signupInput = req.body;
 
     const roster = await prisma.studentRoster.findUnique({
       where: {

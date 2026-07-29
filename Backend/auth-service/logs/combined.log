@@ -58,3 +58,24 @@
 {"collegeId":"BTECHCS230098","ip":"::1","level":"info","message":"Login successful","timestamp":"2026-07-27T09:13:08.708Z","userId":"425326c7-3e42-4fdf-b0d7-c1b69dde283b"}
 {"collegeId":"BTECHCS230098","ip":"::1","level":"info","message":"Login successful","timestamp":"2026-07-27T12:24:57.947Z","userId":"425326c7-3e42-4fdf-b0d7-c1b69dde283b"}
 {"level":"info","message":"Cleanup: 0 unverified users removed","timestamp":"2026-07-28T03:17:23.599Z"}
+{"collegeId":"BTECHCS230098","ip":"::1","level":"info","message":"Login successful","timestamp":"2026-07-28T13:33:47.180Z","userId":"425326c7-3e42-4fdf-b0d7-c1b69dde283b"}
+{"fieldsUpdated":[],"level":"info","message":"User profile updated","timestamp":"2026-07-28T13:39:43.546Z","userId":"425326c7-3e42-4fdf-b0d7-c1b69dde283b"}
+{"level":"warn","message":"Roster upload attempted without a file","timestamp":"2026-07-28T13:41:39.364Z"}
+{"fileName":"test-data.csv","imported":0,"level":"info","message":"Roster upload completed","skipped":4,"timestamp":"2026-07-28T13:42:18.357Z","totalRows":4}
+{"collegeId":"2021CS001","level":"info","message":"User signup successful","timestamp":"2026-07-28T13:44:38.495Z","userId":"db7128c0-3536-4d65-9a5d-f111d2646802"}
+{"level":"info","message":"Processing email job: send-signup-email","timestamp":"2026-07-28T13:44:38.612Z"}
+{"level":"info","message":"Email job completed: 10","timestamp":"2026-07-28T13:44:39.949Z"}
+{"fileName":"test-data.csv","imported":0,"level":"info","message":"Roster upload completed","skipped":4,"timestamp":"2026-07-28T13:49:37.556Z","totalRows":4}
+{"fileName":"test-data.csv","imported":2,"level":"info","message":"Roster upload completed","skipped":4,"timestamp":"2026-07-28T13:53:03.649Z","totalRows":6}
+{"collegeId":"28072026","level":"info","message":"User signup successful","timestamp":"2026-07-28T13:53:42.472Z","userId":"2b150514-7a2f-45fb-bb24-6a29081e059e"}
+{"level":"info","message":"Processing email job: send-signup-email","timestamp":"2026-07-28T13:53:42.578Z"}
+{"level":"info","message":"Email job completed: 11","timestamp":"2026-07-28T13:53:43.581Z"}
+{"collegeId":"28072026","level":"info","message":"Verification completed","timestamp":"2026-07-28T13:54:25.477Z","userId":"2b150514-7a2f-45fb-bb24-6a29081e059e"}
+{"fieldsUpdated":["bio"],"level":"info","message":"User profile updated","timestamp":"2026-07-28T13:56:21.198Z","userId":"2b150514-7a2f-45fb-bb24-6a29081e059e"}
+{"collegeId":"29072026","level":"warn","message":"getUserById - user not found","timestamp":"2026-07-28T13:56:41.219Z"}
+{"level":"info","message":"User logged out","timestamp":"2026-07-28T14:02:41.189Z","userId":"2b150514-7a2f-45fb-bb24-6a29081e059e"}
+{"collegeId":"BTECHCS230098","ip":"::1","level":"info","message":"Login successful","timestamp":"2026-07-28T14:02:56.178Z","userId":"425326c7-3e42-4fdf-b0d7-c1b69dde283b"}
+{"fieldsUpdated":["bio"],"level":"info","message":"User profile updated","timestamp":"2026-07-28T14:03:38.122Z","userId":"425326c7-3e42-4fdf-b0d7-c1b69dde283b"}
+{"level":"info","message":"User logged out","timestamp":"2026-07-28T14:06:31.602Z","userId":"425326c7-3e42-4fdf-b0d7-c1b69dde283b"}
+{"collegeId":"28072026","ip":"::1","level":"info","message":"Login successful","timestamp":"2026-07-28T14:06:46.635Z","userId":"2b150514-7a2f-45fb-bb24-6a29081e059e"}
+{"level":"info","message":"Cleanup: 0 unverified users removed","timestamp":"2026-07-29T03:20:38.674Z"}

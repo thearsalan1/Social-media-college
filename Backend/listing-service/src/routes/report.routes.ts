@@ -2,7 +2,7 @@ import { Router } from "express";
 import {
   authMiddleware,
   requireRoles,
-} from "../middlewares/auth.middleware.js"; // ⚠️ note neeche
+} from "../middlewares/auth.middleware.js";
 import {
   reportContent,
   unbanContent,

@@ -13,12 +13,10 @@ export const createSocialPost = async (req: Request, res: Response) => {
 
   try {
     if (!userId || !collegeName || !branch || !name) {
-      return res
-        .status(400)
-        .json({
-          success: false,
-          message: "User need to be authenticated first",
-        });
+      return res.status(400).json({
+        success: false,
+        message: "User need to be authenticated first",
+      });
     }
     if (!content || content.length === 0) {
       return res
@@ -245,7 +243,7 @@ export const getAllPosts = async (req: Request, res: Response) => {
         .limit(limitNum),
       SocialPost.countDocuments(filter),
     ]);
-
+    logger.info(`Data found ${posts.length}`, posts);
     return res.status(200).json({
       success: true,
       data: posts,
