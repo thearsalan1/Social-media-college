@@ -6,6 +6,7 @@ import {
   uploadMultipleImages,
 } from "../utils/uploadToCloudinary";
 import { logger } from "../config/logger";
+import { normalizeParam } from "../utils/normalizeParams";
 
 export const createAnnouncement = async (req: Request, res: Response) => {
   const { title, content, type, branch, expiresAt } = req.body;
@@ -68,12 +69,11 @@ export const createAnnouncement = async (req: Request, res: Response) => {
 };
 
 export const updateAnnouncement = async (req: Request, res: Response) => {
-  let { id } = req.params;
+  const id = normalizeParam(req.params.id);
   const { title, content, type, branch, expiresAt } = req.body;
   const files = req.files as Express.Multer.File[] | undefined;
 
   try {
-    id.toString();
     const announcement = await prisma.announcement.findUnique({
       where: { id },
       include: { attachments: true },
@@ -93,15 +93,12 @@ export const updateAnnouncement = async (req: Request, res: Response) => {
           .json({ success: false, message: "Maximum 3 attachments allowed" });
       }
 
-      // Delete old attachments from Cloudinary
       for (const attachment of announcement.attachments) {
         await deleteFromCloudinary(attachment.publicId);
       }
 
-      // Delete old attachments from DB
       await prisma.attachment.deleteMany({ where: { announcementId: id } });
 
-      // Upload new ones
       uploadedFiles = await uploadMultipleImages(files, "announcements");
     }
 
@@ -130,5 +127,104 @@ export const updateAnnouncement = async (req: Request, res: Response) => {
   } catch (error) {
     logger.error("Update announcement failed", { error });
     return res.status(500).json({ success: false, message: "Server error" });
+  }
+};
+
+export const deleteAnnouncement = async (req: Request, res: Response) => {
+  const id = normalizeParam(req.params.id);
+  try {
+    if (!id) {
+      return res
+        .status(400)
+        .json({ success: false, message: "Announcement id needed" });
+    }
+
+    const announcement = await prisma.announcement.findUnique({
+      where: { id },
+      include: { attachments: true },
+    });
+
+    if (!announcement) {
+      return res
+        .status(404)
+        .json({ success: false, message: "Announcement not found" });
+    }
+
+    for (const attachment of announcement.attachments) {
+      await deleteFromCloudinary(attachment.publicId);
+    }
+
+    await prisma.attachment.deleteMany({ where: { announcementId: id } });
+    await prisma.announcement.delete({ where: { id } });
+
+    logger.info("Announcement deleted", { announcementId: id });
+    return res
+      .status(200)
+      .json({ success: true, message: "Announcement deleted" });
+  } catch (error) {
+    logger.error("Delete announcement failed", { error });
+    return res.status(500).json({ success: false, message: "Server error" });
+  }
+};
+
+export const togglePinned = async (req: Request, res: Response) => {
+  const id = normalizeParam(req.params.id);
+
+  if (!id) {
+    return res.status(400).json({ success: false, message: "Id needed" });
+  }
+
+  try {
+    const announcement = await prisma.announcement.update({
+      where: { id },
+      data: {
+        isPinned: {
+          set: undefined,
+        },
+      },
+      select: { isPinned: true },
+    });
+
+    const updated = await prisma.announcement.update({
+      where: { id },
+      data: {
+        isPinned: !announcement.isPinned,
+      },
+    });
+
+    return res.status(200).json({
+      success: true,
+      message: `Announcement ${updated.isPinned ? "pinned" : "unpinned"} successfully`,
+    });
+  } catch (error) {
+    logger.error(`Error in pinning the announcement`, { error });
+    return res
+      .status(500)
+      .json({ success: false, message: "Internal server error" });
+  }
+};
+
+export const getAllAnnouncements = async (req: Request, res: Response) => {
+  try {
+    const announcements = await prisma.announcement.findMany();
+    if (!announcements) {
+      return res
+        .status(400)
+        .json({ success: false, message: "Announcements not found" });
+    }
+    if (announcements.length === 0) {
+      return res
+        .status(200)
+        .json({ success: false, message: "Announcements not available" });
+    }
+    logger.info(`Annoucements found are ${announcements.length}`);
+    res.status(200).json({
+      success: false,
+      message: "Announcements found",
+      data: announcements,
+    });
+  } catch (error) {
+    logger.error(`Error in finding announcements ${error}`);
+    res.status(500).json({ success: false, message: "Internal server error" });
   }
 };
