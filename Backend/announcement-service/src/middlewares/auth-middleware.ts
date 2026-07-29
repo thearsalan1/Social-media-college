@@ -1,21 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 
-declare global {
-  namespace Express {
-    interface Request {
-      user?: {
-        userId: string;
-        role: string;
-        collegeId: string;
-        collegeName: string;
-        branch: string;
-        name: string;
-      };
-    }
-  }
-}
-
 export function authMiddleware(
   req: Request,
   res: Response,

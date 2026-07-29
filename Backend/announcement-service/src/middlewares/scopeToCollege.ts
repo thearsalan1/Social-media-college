@@ -11,11 +11,3 @@ export const scopeToMiddleware = (
   req.collegeFilter = { collegeName: req.user.collegeName };
   next();
 };
-
-declare global {
-  namespace Express {
-    interface Request {
-      collegeFilter?: { collegeName: string };
-    }
-  }
-}
