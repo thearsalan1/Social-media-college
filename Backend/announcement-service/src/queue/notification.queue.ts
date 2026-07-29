@@ -1,7 +1,7 @@
 import { Queue } from "bullmq";
 import { connection } from "../config/redis.js";
 
-export const notificationQueue = new Queue("notification-event", {
+export const notificationQueue = new Queue("notification-events", {
   connection,
   defaultJobOptions: {
     backoff: { type: "exponential", delay: 500 },

@@ -131,9 +131,15 @@ exports.Prisma.AnnouncementScalarFieldEnum = {
   branch: 'branch',
   isPinned: 'isPinned',
   expiresAt: 'expiresAt',
-  attachments: 'attachments',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
+};
+
+exports.Prisma.AttachmentScalarFieldEnum = {
+  id: 'id',
+  url: 'url',
+  publicId: 'publicId',
+  announcementId: 'announcementId'
 };
 
 exports.Prisma.AnnouncementCommentScalarFieldEnum = {
@@ -167,6 +173,7 @@ exports.AnnouncementType = exports.$Enums.AnnouncementType = {
 
 exports.Prisma.ModelName = {
   Announcement: 'Announcement',
+  Attachment: 'Attachment',
   AnnouncementComment: 'AnnouncementComment'
 };
 

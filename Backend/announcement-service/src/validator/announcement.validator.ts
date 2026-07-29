@@ -7,7 +7,7 @@ export const createAnnouncementSchema = z.object({
   type: z.nativeEnum(AnnouncementType),
 
   branch: z.string().optional(),
-  expiresAt: z.date().optional(),
+  expiresAt: z.coerce.date().optional(),
   attachments: z.array(z.string()).optional(),
 });
 

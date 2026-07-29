@@ -14,37 +14,48 @@ enum AnnouncementType {
 }
 
 model Announcement {
-  id            String   @id @default(uuid())
-  title         String
-  content       String
-  type          AnnouncementType @default(NOTICE)
+  id      String           @id @default(uuid())
+  title   String
+  content String
+  type    AnnouncementType @default(NOTICE)
 
-  postedBy      String
-  postedByName  String
+  postedBy     String
+  postedByName String
 
-  collegeName   String
-  branch        String?
+  collegeName String
+  branch      String?
 
-  isPinned      Boolean  @default(false)
-  expiresAt     DateTime?
-  attachments   String[]
+  isPinned  Boolean   @default(false)
+  expiresAt DateTime?
 
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  // Instead of String[], use relation
+  attachments Attachment[]
 
-  comments      AnnouncementComment[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  comments AnnouncementComment[]
 
   @@index([collegeName])
 }
 
+model Attachment {
+  id       String @id @default(uuid())
+  url      String
+  publicId String
+
+  announcementId String
+  announcement   Announcement @relation(fields: [announcementId], references: [id], onDelete: Cascade)
+}
+
 model AnnouncementComment {
-  id             String   @id @default(uuid())
-  content        String
-  userId         String
-  userName       String
+  id       String @id @default(uuid())
+  content  String
+  userId   String
+  userName String
 
   announcementId String
   announcement   Announcement @relation(fields: [announcementId], references: [id], onDelete: Cascade)
 
-  createdAt      DateTime @default(now())
+  createdAt DateTime @default(now())
 }
