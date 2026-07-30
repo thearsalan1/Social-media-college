@@ -16,7 +16,7 @@ export const createComment = async (req: Request, res: Response) => {
     return res.status(400).json({ success: false, message: "Content needed" });
   }
   if (!userId || !name) {
-    res
+    return res
       .status(400)
       .json({ success: false, message: "User need to authenticate first" });
   }
@@ -38,7 +38,7 @@ export const createComment = async (req: Request, res: Response) => {
       },
     });
     logger.info(`Comment created by user ${comment.content}`);
-    res
+    return res
       .status(201)
       .json({ success: true, message: "Comment created successfully" });
   } catch (error) {
@@ -84,7 +84,7 @@ export const getAllCommentsOnAnnouncement = async (
     logger.info(`comments found for the announcement are : ${comments.length}`);
     res
       .status(200)
-      .json({ success: false, message: "Comment found", data: comments });
+      .json({ success: true, message: "Comment found", data: comments });
   } catch (error) {
     logger.error(`Error in comment fetching ${error}`);
     res.status(500).json({ success: false, message: "Internal server error" });
@@ -93,24 +93,35 @@ export const getAllCommentsOnAnnouncement = async (
 
 export const deleteComment = async (req: Request, res: Response) => {
   const id = normalizeParam(req.params.id);
+  const { userId } = req.user!;
   if (!id) {
     return res
       .status(400)
       .json({ success: false, message: "Comment id needed" });
   }
   try {
-    const comment = await prisma.announcementComment.delete({
+    const existing = await prisma.announcementComment.findUnique({
       where: { id },
     });
-    if (!comment) {
+    if (!existing) {
       return res
-        .status(400)
+        .status(404)
         .json({ success: false, message: "Comment not found" });
     }
-    logger.info(`Comment deleted successfully `);
-    res.status(200).json({ success: true, message: "Comment deleted" });
+    if (existing.id != userId) {
+      return res
+        .status(400)
+        .json({ success: false, message: "You can delete only your comment" });
+    }
+
+    await prisma.announcementComment.delete({ where: { id } });
+
+    logger.info("Comment deleted successfully");
+    return res.status(200).json({ success: true, message: "Comment deleted" });
   } catch (error) {
-    logger.error(`Error in comment deletion ${error}`);
-    res.status(500).json({ success: false, message: "Internal server error" });
+    logger.error("Error in comment deletion", { error });
+    return res
+      .status(500)
+      .json({ success: false, message: "Internal server error" });
   }
 };

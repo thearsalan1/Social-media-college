@@ -5,6 +5,8 @@ import helmet from "helmet";
 import cookieParser from "cookie-parser";
 import { connection } from "./src/config/redis.js";
 import { logger } from "./src/config/logger.js";
+import announcemetRoutes from "./src/routes/announcement.routes.js";
+import commentsRoutes from "./src/routes/comments.routes.js";
 
 const app = express();
 app.use(cookieParser());
@@ -16,6 +18,9 @@ app.use(
     credentials: true,
   }),
 );
+
+app.get("/announcement", announcemetRoutes);
+app.get("/announcement", commentsRoutes);
 
 app.get("/health", (req: Request, res: Response) => {
   res

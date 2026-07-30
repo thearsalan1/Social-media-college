@@ -169,27 +169,24 @@ export const deleteAnnouncement = async (req: Request, res: Response) => {
 
 export const togglePinned = async (req: Request, res: Response) => {
   const id = normalizeParam(req.params.id);
-
-  if (!id) {
+  if (!id)
     return res.status(400).json({ success: false, message: "Id needed" });
-  }
 
   try {
-    const announcement = await prisma.announcement.update({
+    const announcement = await prisma.announcement.findUnique({
       where: { id },
-      data: {
-        isPinned: {
-          set: undefined,
-        },
-      },
       select: { isPinned: true },
     });
 
+    if (!announcement) {
+      return res
+        .status(404)
+        .json({ success: false, message: "Announcement not found" });
+    }
+
     const updated = await prisma.announcement.update({
       where: { id },
-      data: {
-        isPinned: !announcement.isPinned,
-      },
+      data: { isPinned: !announcement.isPinned },
     });
 
     return res.status(200).json({
@@ -197,7 +194,7 @@ export const togglePinned = async (req: Request, res: Response) => {
       message: `Announcement ${updated.isPinned ? "pinned" : "unpinned"} successfully`,
     });
   } catch (error) {
-    logger.error(`Error in pinning the announcement`, { error });
+    logger.error("Error pinning announcement", { error });
     return res
       .status(500)
       .json({ success: false, message: "Internal server error" });
@@ -206,54 +203,48 @@ export const togglePinned = async (req: Request, res: Response) => {
 
 export const getAllAnnouncements = async (req: Request, res: Response) => {
   try {
-    const { type, branch, page = 1, limit = 10, collegeId } = req.query;
+    const { type, branch, page = 1, limit = 10 } = req.query;
+    const { collegeName } = req.user!;
 
     const filters: any = {
-      collegeId: collegeId ? Number(collegeId) : undefined,
+      collegeName,
       type: type || undefined,
+      OR: [{ expiresAt: null }, { expiresAt: { gt: new Date() } }],
     };
 
-    if (branch) {
-      filters.branch = branch;
-    }
+    if (branch) filters.branch = branch;
 
-    filters.OR = [
-      { expiresAt: null },
-      { expiresAt: { gt: new Date() } },
-    ];
+    const [announcements, total] = await Promise.all([
+      prisma.announcement.findMany({
+        where: filters,
+        orderBy: [{ isPinned: "desc" }, { createdAt: "desc" }],
+        skip: (Number(page) - 1) * Number(limit),
+        take: Number(limit),
+        include: { attachments: true },
+      }),
+      prisma.announcement.count({ where: filters }),
+    ]);
 
-    const announcements = await prisma.announcement.findMany({
-      where: filters,
-      orderBy: [
-        { isPinned: "desc" },
-        { createdAt: "desc" },
-      ],
-      skip: (Number(page) - 1) * Number(limit),
-      take: Number(limit),
-    });
-
-    if (announcements.length === 0) {
-      return res.status(200).json({
-        success: false,
-        message: "Announcements not available",
-      });
-    }
-
-    logger.info(`Announcements found: ${announcements.length}`);
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
-      message: "Announcements found",
       data: announcements,
+      pagination: {
+        currentPage: Number(page),
+        totalPages: Math.ceil(total / Number(limit)),
+        totalItems: total,
+      },
     });
   } catch (error) {
-    logger.error(`Error in finding announcements: ${error}`);
-    res.status(500).json({ success: false, message: "Internal server error" });
+    logger.error("Error fetching announcements", { error });
+    return res
+      .status(500)
+      .json({ success: false, message: "Internal server error" });
   }
 };
 
-
 export const getAnnouncementWithId = async (req: Request, res: Response) => {
   const id = normalizeParam(req.params.id);
+  const { collegeName } = req.user!;
   try {
     if (!id) {
       return res
@@ -261,7 +252,7 @@ export const getAnnouncementWithId = async (req: Request, res: Response) => {
         .json({ success: false, message: "Announcement Id needed" });
     }
     const announcement = await prisma.announcement.findUnique({
-      where: { id },
+      where: { id, collegeName },
     });
     if (!announcement) {
       return res
@@ -269,9 +260,11 @@ export const getAnnouncementWithId = async (req: Request, res: Response) => {
         .json({ success: false, message: "Announcement not found" });
     }
     logger.info(`Announcement found ${announcement}`);
-    return res
-      .status(200)
-      .json({ success: true, message: "Announcement found" });
+    return res.status(200).json({
+      success: true,
+      message: "Announcement found",
+      data: announcement,
+    });
   } catch (error) {
     logger.error(`Error in finding announcement ${error}`);
     res.status(500).json({ success: false, message: "Internal server error" });
