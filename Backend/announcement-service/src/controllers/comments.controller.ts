@@ -108,7 +108,7 @@ export const deleteComment = async (req: Request, res: Response) => {
         .status(404)
         .json({ success: false, message: "Comment not found" });
     }
-    if (existing.id != userId) {
+    if (existing.userId != userId) {
       return res
         .status(400)
         .json({ success: false, message: "You can delete only your comment" });

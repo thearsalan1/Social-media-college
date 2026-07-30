@@ -37,11 +37,6 @@ router.get(
   getAllCommentsOnAnnouncement,
 );
 
-router.delete(
-  "/announcements/comment/:id",
-  authMiddleware,
-  checkOwnership("id"),
-  deleteComment,
-);
+router.delete("/announcements/comment/:id", authMiddleware, deleteComment);
 
 export default router;

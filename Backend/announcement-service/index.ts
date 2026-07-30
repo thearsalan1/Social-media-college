@@ -19,8 +19,8 @@ app.use(
   }),
 );
 
-app.get("/announcement", announcemetRoutes);
-app.get("/announcement", commentsRoutes);
+app.use("/announcement", announcemetRoutes);
+app.use("/announcement", commentsRoutes);
 
 app.get("/health", (req: Request, res: Response) => {
   res
