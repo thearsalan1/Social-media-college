@@ -11,25 +11,25 @@ export enum originType {
 export interface messageInterface {
   conversationId: string;
   senderId: string;
-  content: string;
-  imageUrl: string;
+  content?: string;
+  imageUrl?: string | null;
   isRead: boolean;
   isEdited: boolean;
-  editedAt: Date;
+  editedAt?: Date | null;
   isDeleted: boolean;
-  deletedAt: Date;
+  deletedAt?: Date | null;
 }
 
 export interface converstionInterface {
-  participants: string;
+  participants: string[];
   status: statusType;
-  requestedBy: string;
+  requestedBy?: string;
   originType: originType;
-  lastItemId: string;
+  lastItemId?: string;
   collegeName: string;
-  archivedBy: string;
-  lastMessage: string;
-  lastMessageAt: Date;
+  archivedBy: string[];
+  lastMessage?: string;
+  lastMessageAt?: Date;
 }
 
 export interface BlockInterface {
