@@ -96,7 +96,7 @@ export const startMarketPlaceChat = async (req: Request, res: Response) => {
     const participants = getSortedParticipants(userId, sellerId);
     let conversation = await Conversation.findOne({ participants });
     if (!conversation) {
-      await Conversation.create({
+      conversation = await Conversation.create({
         participants,
         originType: originType.MarketPlace,
         status: statusType.Active,

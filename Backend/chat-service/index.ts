@@ -7,6 +7,8 @@ import { createServer } from "node:http";
 import { Server } from "socket.io";
 import { initialiseIo } from "./src/socket/socket.js";
 import { connectDB } from "./src/db/db.js";
+import messageRoutes from "./src/routes/message.routes.js";
+import conversationRoutes from "./src/routes/conversation.routes.js";
 
 const app = express();
 app.use(cookieParser());
@@ -28,14 +30,16 @@ const io = new Server(httpServer, {
   },
 });
 
-initialiseIo(io);
-connectDB();
+app.use("/chat", messageRoutes);
+app.use("/chat", conversationRoutes);
 
 app.get("/health", (req: Request, res: Response) => {
   return res
     .status(200)
     .json({ success: true, message: "chat-service running successfully" });
 });
+initialiseIo(io);
+connectDB();
 
 const PORT = process.env.PORT || 5004;
 httpServer.listen(PORT, () => {

@@ -18,6 +18,7 @@ export interface messageInterface {
   editedAt?: Date | null;
   isDeleted: boolean;
   deletedAt?: Date | null;
+  createdAt?: Date | null;
 }
 
 export interface converstionInterface {
