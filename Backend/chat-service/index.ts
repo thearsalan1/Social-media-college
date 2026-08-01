@@ -1,20 +1,21 @@
 import "dotenv/config";
+import helmet from "helmet";
 import cookieParser from "cookie-parser";
 import express, { type Request, type Response } from "express";
 import cors from "cors";
 import { createServer } from "node:http";
 import { Server } from "socket.io";
-import multer from "multer";
 import { initialiseIo } from "./src/socket/socket.js";
 import { connectDB } from "./src/db/db.js";
 
 const app = express();
 app.use(cookieParser());
-app.use(multer);
+app.use(helmet());
 app.use(
   cors({
-    origin: process.env.Frontend_Url || "http://localhost:5173",
+    origin: process.env.FRONTEND_URL || "http://localhost:5173",
     methods: ["GET", "POST", "PATCH", "DELETE"],
+    credentials: true,
   }),
 );
 const httpServer = createServer(app);
@@ -23,6 +24,7 @@ const io = new Server(httpServer, {
   cors: {
     origin: process.env.FRONTEND_URL || "http://localhost:5173",
     methods: ["GET", "POST", "PATCH", "DELETE"],
+    credentials: true,
   },
 });
 
