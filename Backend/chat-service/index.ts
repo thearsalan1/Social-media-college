@@ -9,6 +9,7 @@ import { initialiseIo } from "./src/socket/socket.js";
 import { connectDB } from "./src/db/db.js";
 import messageRoutes from "./src/routes/message.routes.js";
 import conversationRoutes from "./src/routes/conversation.routes.js";
+import blockRoutes from "./src/routes/block.routes.js";
 
 const app = express();
 app.use(cookieParser());
@@ -32,6 +33,7 @@ const io = new Server(httpServer, {
 
 app.use("/chat", messageRoutes);
 app.use("/chat", conversationRoutes);
+app.use("/chat", blockRoutes);
 
 app.get("/health", (req: Request, res: Response) => {
   return res
