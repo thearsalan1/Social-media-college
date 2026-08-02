@@ -1,6 +1,6 @@
 import { Socket } from "socket.io";
 import jwt from "jsonwebtoken";
-import * as cookie from "cookie";
+import * as cookieParser from "cookie";
 
 interface SocketUser {
   userId: string;
@@ -28,7 +28,7 @@ export function socketAuthMiddleware(
       return next(new Error("Authentication failed: no cookies"));
     }
 
-    const parsedCookies = cookie.parseCookie(rawCookies);
+    const parsedCookies = (cookieParser as any).parse(rawCookies);
     const token = parsedCookies.accessToken;
 
     if (!token) {
