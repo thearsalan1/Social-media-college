@@ -11,6 +11,7 @@ import messageRoutes from "./src/routes/message.routes.js";
 import conversationRoutes from "./src/routes/conversation.routes.js";
 import blockRoutes from "./src/routes/block.routes.js";
 import { connection } from "./src/config/redis.js";
+import { offlineCheckWorker } from "./src/worker/offlineCheck.worker.js";
 
 const app = express();
 app.use(cookieParser());
@@ -44,6 +45,7 @@ app.get("/health", (req: Request, res: Response) => {
 initialiseIo(io);
 connectDB();
 connection;
+offlineCheckWorker;
 
 const PORT = process.env.PORT || 5004;
 httpServer.listen(PORT, () => {

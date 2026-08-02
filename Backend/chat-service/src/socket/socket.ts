@@ -6,6 +6,7 @@ import { Conversation } from "../models/Conversation.model.js";
 import { canSendMessage } from "../utils/messageValidation.js";
 import { statusType } from "../types/types.js";
 import { Message } from "../models/Message.model.js";
+import { offlineCheckQueue } from "../queue/offlineCheck.queue.js";
 
 export const initialiseIo = (io: SocketIOServer) => {
   io.use(socketAuthMiddleware);
@@ -17,6 +18,11 @@ export const initialiseIo = (io: SocketIOServer) => {
     socket.join(`user:${userId}`);
 
     await redis.set(`online:${userId}`, "true", "EX", 60);
+    const pendingJob = await offlineCheckQueue.getJob(`offline-notify:${userId}`);
+    if(pendingJob){
+      await pendingJob.remove();
+       logger.info("Cancelled pending offline notification (user came online)", { userId });
+    }
 
     // JOIN CONVERSATION
     socket.on("join-conversation", async (conversationId: string) => {
@@ -80,6 +86,29 @@ export const initialiseIo = (io: SocketIOServer) => {
             conversationId,
             preview: content || "Sent an image",
           });
+          const isRecipientOnline = await redis.exists(
+            `online:${otherParticipant}`,
+          );
+          if (!isRecipientOnline) {
+            const jobId = `offline-notify:${otherParticipant}`;
+            const existingJob = await offlineCheckQueue.getJob(jobId);
+            if (existingJob) {
+              await existingJob.remove();
+            }
+            await offlineCheckQueue.add(
+              "check-offline",
+              {
+                recipientId: otherParticipant,
+                conversationId,
+                senderId: socket.user!.userId,
+                preview: (content || "send an image").subString(0, 50),
+              },
+              {
+                jobId,
+                delay: 5 * 60 * 1000,
+              },
+            );
+          }
         }
         logger.info("Message sent via socket", { conversationId, userId });
       } catch (error) {
