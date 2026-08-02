@@ -79,3 +79,5 @@
 {"level":"info","message":"User logged out","timestamp":"2026-07-28T14:06:31.602Z","userId":"425326c7-3e42-4fdf-b0d7-c1b69dde283b"}
 {"collegeId":"28072026","ip":"::1","level":"info","message":"Login successful","timestamp":"2026-07-28T14:06:46.635Z","userId":"2b150514-7a2f-45fb-bb24-6a29081e059e"}
 {"level":"info","message":"Cleanup: 0 unverified users removed","timestamp":"2026-07-29T03:20:38.674Z"}
+{"level":"info","message":"Cleanup: 1 unverified users removed","timestamp":"2026-08-02T06:57:15.468Z"}
+{"collegeId":"28072026","ip":"::1","level":"info","message":"Login successful","timestamp":"2026-08-02T06:57:35.901Z","userId":"2b150514-7a2f-45fb-bb24-6a29081e059e"}
