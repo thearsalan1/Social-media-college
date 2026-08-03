@@ -9,6 +9,7 @@ import {
   editMessage,
   deleteMessage,
 } from "../controllers/message.controller.js";
+import { uploadChatImage } from "../config/multer.js";
 
 const router = Router();
 
@@ -20,6 +21,7 @@ router.post(
     maxRequests: 60,
     prefix: "send-message",
   }),
+   uploadChatImage.single("image"), 
   sanitizeInput(["content"]),
   sendMessage,
 );

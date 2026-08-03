@@ -5,16 +5,18 @@ import { Message } from "../models/Message.model.js";
 import { logger } from "../config/logger.js";
 import { Conversation } from "../models/Conversation.model.js";
 
+import { uploadSingleImage } from "../utils/uploadToCloudinary.js";
+
 export const sendMessage = async (req: Request, res: Response) => {
-  const { conversationId, content, imageUrl } = req.body;
+  const { conversationId, content } = req.body;
   const { userId } = req.user!;
+  const file = req.file as Express.Multer.File | undefined;   // .single() se ek hi file
+
   try {
-    if (!conversationId || (!content && !imageUrl)) {
-      return res.status(400).json({
-        success: false,
-        message: "conversationId and content/imageUrl required",
-      });
+    if (!conversationId || (!content && !file)) {
+      return res.status(400).json({ success: false, message: "conversationId and content/image required" });
     }
+
     const check = await canSendMessage(conversationId, userId);
     if (!check.allowed) {
       return res.status(403).json({ success: false, message: check.reason });
@@ -23,17 +25,19 @@ export const sendMessage = async (req: Request, res: Response) => {
     if (check.becomesActive) {
       check.conversation!.status = statusType.Active;
     }
-    const message = await Message.create({
-      conversationId,
-      senderId: userId,
-      content,
-      imageUrl,
-      createdAt: Date.now(),
-    });
+
+    let imageUrl: string | undefined;
+    if (file) {
+      const uploaded = await uploadSingleImage(file.buffer);
+      imageUrl = uploaded.url;
+    }
+
+    const message = await Message.create({ conversationId, senderId: userId, content, imageUrl });
+
     check.conversation!.lastMessage = content || "[Image]";
     check.conversation!.lastMessageAt = new Date();
     await check.conversation!.save();
-    logger.info("Message sent (REST)", { conversationId, userId });
+
     return res.status(201).json({ success: true, message });
   } catch (error) {
     logger.error("Send message failed", { error });
