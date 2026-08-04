@@ -14,3 +14,7 @@
 {"level":"info","message":"MongoDB connected","timestamp":"2026-08-04T06:16:31.727Z"}
 {"level":"info","message":"Notification service running at http://localhost:5005","timestamp":"2026-08-04T06:17:27.984Z"}
 {"level":"info","message":"MongoDB connected","timestamp":"2026-08-04T06:17:28.529Z"}
+{"level":"info","message":"Notification service running at http://localhost:5005","timestamp":"2026-08-04T06:24:31.621Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2026-08-04T06:24:32.359Z"}
+{"level":"info","message":"Notification service running at http://localhost:5005","timestamp":"2026-08-04T06:24:37.623Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2026-08-04T06:24:38.401Z"}

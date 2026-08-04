@@ -7,6 +7,7 @@ import cookieParser from "cookie-parser";
 import rosterRoutes from "./src/routes/admin.route.js";
 import authRoutes from "./src/routes/auth.routes.js";
 import studentRoutes from "./src/routes/students.routes.js";
+import internalRoutes from "./src/routes/internal.routes.js";
 import helmet from "helmet";
 import { scheduleCleanup } from "./src/queue/cleanup.queue.js";
 import { cleanupWorker } from "./src/worker/cleanup.worker.js";
@@ -29,6 +30,7 @@ app.use("/health", (req: Request, res: Response) => {
 app.use("/auth", rosterRoutes);
 app.use("/auth", authRoutes);
 app.use("/auth", studentRoutes);
+app.use("/auth", internalRoutes);
 
 connection;
 emailWorker;
