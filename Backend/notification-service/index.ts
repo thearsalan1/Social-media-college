@@ -6,6 +6,7 @@ import cookieParser from "cookie-parser";
 import { connection } from "./src/config/redis.js";
 import { connectDB } from "./src/db/db.js";
 import { logger } from "./src/config/logger.js";
+import { notificationWorker } from "./src/workers/notification-worker.js"; 
 
 const app = express();
 app.use(helmet());
@@ -23,6 +24,7 @@ app.get("/health", (req: Request, res: Response) => {
 });
 
 connectDB();
+notificationWorker;
 connection;
 
 const PORT = process.env.PORT || 5005;

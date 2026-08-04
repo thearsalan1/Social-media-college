@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "nodemon --watch . --ext ts --exec \"tsx index.ts\"",
     "start": "tsx index.ts",
-    "worker": "tsx src/workers/notification.worker.js",
+    "worker": "tsx src/workers/notification-worker.ts",
     "build": "tsc"
   },
   "dependencies": {

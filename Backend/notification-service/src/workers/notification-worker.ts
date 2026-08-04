@@ -14,7 +14,10 @@ export const notificationWorker = new Worker(
     const { type, recipientId, sourceService, relatedId, ...data } = job.data;
 
     if (!recipientId || recipientId === "ADMIN") {
-      logger.info("Admin-targeted notification, deferred to bulk-resolve logic", { type });
+      logger.info(
+        "Admin-targeted notification, deferred to bulk-resolve logic",
+        { type },
+      );
       return;
     }
 
@@ -31,16 +34,21 @@ export const notificationWorker = new Worker(
 
     if (EMAIL_REQUIRED_TYPES.includes(type)) {
       try {
-        logger.warn("Email required but recipient email not resolved yet", { type, recipientId });
+        logger.warn("Email required but recipient email not resolved yet", {
+          type,
+          recipientId,
+        });
       } catch (error) {
         logger.error("Email send failed", { error, recipientId });
-        await Notification.findByIdAndUpdate(notification._id, { emailStatus: "FAILED" });
+        await Notification.findByIdAndUpdate(notification._id, {
+          emailStatus: "FAILED",
+        });
       }
     }
 
     logger.info("Notification processed", { type, recipientId });
   },
-  { connection }
+  { connection },
 );
 
 notificationWorker.on("completed", (job) => {
