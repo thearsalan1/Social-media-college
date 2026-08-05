@@ -12,6 +12,7 @@ import conversationRoutes from "./src/routes/conversation.routes.js";
 import blockRoutes from "./src/routes/block.routes.js";
 import { connection } from "./src/config/redis.js";
 import { offlineCheckWorker } from "./src/worker/offlineCheck.worker.js";
+import { subscribeToNotifications } from "./src/socket/notificationSubscriber.js";
 
 const app = express();
 app.use(cookieParser());
@@ -43,6 +44,7 @@ app.get("/health", (req: Request, res: Response) => {
     .json({ success: true, message: "chat-service running successfully" });
 });
 initialiseIo(io);
+subscribeToNotifications(io);
 connectDB();
 connection;
 offlineCheckWorker;
