@@ -18,3 +18,13 @@
 {"level":"info","message":"MongoDB connected","timestamp":"2026-08-04T06:24:32.359Z"}
 {"level":"info","message":"Notification service running at http://localhost:5005","timestamp":"2026-08-04T06:24:37.623Z"}
 {"level":"info","message":"MongoDB connected","timestamp":"2026-08-04T06:24:38.401Z"}
+{"level":"info","message":"Notification service running at http://localhost:5005","timestamp":"2026-08-04T06:32:56.593Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2026-08-04T06:32:57.077Z"}
+{"level":"info","message":"Notification service running at http://localhost:5005","timestamp":"2026-08-04T06:35:01.590Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2026-08-04T06:35:02.320Z"}
+{"level":"info","message":"Notification service running at http://localhost:5005","timestamp":"2026-08-05T05:38:10.448Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2026-08-05T05:38:12.244Z"}
+{"level":"info","message":"Notification service running at http://localhost:5005","timestamp":"2026-08-05T05:39:17.608Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2026-08-05T05:39:18.701Z"}
+{"level":"info","message":"Notification service running at http://localhost:5005","timestamp":"2026-08-05T05:39:38.816Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2026-08-05T05:39:40.607Z"}
