@@ -16,7 +16,7 @@ export const subscribeToNotifications = (io: SocketIOServer) => {
   });
 
   subscriber.on("message", (channel, message) => {
-    if (channel === "user-notification") {
+    if (channel === "user-notifications") {
       try {
         const { recipientId, notification } = JSON.parse(message);
         io.to(`user:${recipientId}`).emit("new-notification", notification);

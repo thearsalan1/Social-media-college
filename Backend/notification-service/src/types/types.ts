@@ -10,5 +10,11 @@ export interface NotificationInterface {
 }
 
 export interface NotificationData {
-  [key:string]:any
+  [key: string]: any;
+}
+
+export interface rateLimiteOptions {
+  windowInSeconds: string;
+  maxRequests: number;
+  prefix?: string;
 }
