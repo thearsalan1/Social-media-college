@@ -1,0 +1,42 @@
+version: "3.8"
+
+services:
+  auth-service:
+    build: ./auth-service
+    ports:
+      - "5001:5001"
+    env_file:
+      - ./auth-service/.env
+    restart: unless-stopped
+
+  listing-service:
+    build: ./listing-service
+    ports:
+      - "5002:5002"
+    env_file:
+      - ./listing-service/.env
+    restart: unless-stopped
+
+  announcement-service:
+    build: ./announcement-service
+    ports:
+      - "5003:5003"
+    env_file:
+      - ./announcement-service/.env
+    restart: unless-stopped
+
+  chat-service:
+    build: ./chat-service
+    ports:
+      - "5004:5004"
+    env_file:
+      - ./chat-service/.env
+    restart: unless-stopped
+
+  notification-service:
+    build: ./notification-service
+    ports:
+      - "5005:5005"
+    env_file:
+      - ./notification-service/.env
+    restart: unless-stopped
