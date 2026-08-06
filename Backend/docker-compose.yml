@@ -37,6 +37,22 @@ services:
     build: ./notification-service
     ports:
       - "5005:5005"
+    environment:
+    - AUTH_SERVICE_URL=http://auth-service:5001
     env_file:
       - ./notification-service/.env
     restart: unless-stopped
+
+  api-gateway:
+    build: ./api-gateway
+    ports:
+      - 5000:5000
+    env_file:
+      - ./api-gateway/.env
+    restart: unless-stopped
+    depends_on:
+    - auth-service
+    - listing-service
+    - announcement-service
+    - chat-service
+    - notification-service
