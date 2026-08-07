@@ -45,7 +45,7 @@ app.use(
     target: process.env.LISTING_SERVICE_URL,
     changeOrigin: true,
     cookieDomainRewrite: { "*": "" },
-    pathRewrite: (path) => `/listings${path}`,
+    pathRewrite: (path) => `/listing${path}`,
   }),
 );
 
@@ -55,7 +55,7 @@ app.use(
     target: process.env.ANNOUNCEMENT_SERVICE_URL,
     changeOrigin: true,
     cookieDomainRewrite: { "*": "" },
-    pathRewrite: (path) => `/announcements${path}`,
+    pathRewrite: (path) => `/announcement${path}`,
   }),
 );
 
@@ -76,7 +76,7 @@ app.use(
     target: process.env.NOTIFICATION_SERVICE_URL,
     changeOrigin: true,
     cookieDomainRewrite: { "*": "" },
-    pathRewrite: (path) => `/notifications${path}`,
+    pathRewrite: (path) => `/notification${path}`,
   }),
 );
 

@@ -243,3 +243,6 @@
 {"level":"info","message":"MongoDB connected","timestamp":"2026-08-05T06:36:16.896Z"}
 {"level":"info","message":"Notification service running at http://localhost:5005","timestamp":"2026-08-05T07:23:17.221Z"}
 {"level":"info","message":"MongoDB connected","timestamp":"2026-08-05T07:23:17.746Z"}
+{"level":"info","message":"Notification service running at http://localhost:5005","timestamp":"2026-08-07T13:16:10.243Z"}
+{"level":"info","message":"Notification service running at http://localhost:5005","timestamp":"2026-08-07T13:16:12.837Z"}
+{"level":"info","message":"MongoDB connected","timestamp":"2026-08-07T13:16:13.373Z"}

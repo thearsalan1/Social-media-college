@@ -19,14 +19,13 @@ app.use(
   }),
 );
 
-app.use("/announcement", announcemetRoutes);
-app.use("/announcement", commentsRoutes);
-
 app.get("/announcement/health", (req: Request, res: Response) => {
   res
     .status(200)
     .json({ success: true, message: "Announcement service running" });
 });
+app.use("/announcement", announcemetRoutes);
+app.use("/announcement", commentsRoutes);
 
 connection;
 

@@ -22,17 +22,16 @@ app.use(
   }),
 );
 app.use(express.json());
-app.use("/listings", SocialListingRouter);
-app.use("/listings", marketplaceRoutes);
-app.use("/listings", commentsRoutes);
-app.use("/listings", likeRoutes);
-app.use("/listings", reportRoutes);
-
 app.use("/listing/health", (req: Request, res: Response) => {
   res
     .status(200)
     .json({ success: true, message: "listing-service is running " });
 });
+app.use("/listings", SocialListingRouter);
+app.use("/listings", marketplaceRoutes);
+app.use("/listings", commentsRoutes);
+app.use("/listings", likeRoutes);
+app.use("/listings", reportRoutes);
 
 connectDB();
 connection;

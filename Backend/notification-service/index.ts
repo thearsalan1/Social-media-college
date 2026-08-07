@@ -19,7 +19,6 @@ app.use(
 );
 app.use(express.json());
 app.use(cookieParser());
-
 app.get("/notification/health", (req: Request, res: Response) => {
   res
     .status(200)
