@@ -20,7 +20,7 @@ app.use(
 app.use(express.json());
 app.use(cookieParser());
 
-app.get("/health", (req: Request, res: Response) => {
+app.get("/notification/health", (req: Request, res: Response) => {
   res
     .status(200)
     .json({ success: true, message: "Notification service running" });

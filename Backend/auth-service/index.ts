@@ -23,7 +23,7 @@ app.use(
 app.use(express.json());
 app.use(cookieParser());
 
-app.use("/health", (req: Request, res: Response) => {
+app.use("/auth/health", (req: Request, res: Response) => {
   res.status(200).json({ success: true, message: "auth-service is running " });
 });
 

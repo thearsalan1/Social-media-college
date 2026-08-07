@@ -28,7 +28,7 @@ app.use("/listings", commentsRoutes);
 app.use("/listings", likeRoutes);
 app.use("/listings", reportRoutes);
 
-app.use("/health", (req: Request, res: Response) => {
+app.use("/listing/health", (req: Request, res: Response) => {
   res
     .status(200)
     .json({ success: true, message: "listing-service is running " });

@@ -38,7 +38,7 @@ app.use("/chat", messageRoutes);
 app.use("/chat", conversationRoutes);
 app.use("/chat", blockRoutes);
 
-app.get("/health", (req: Request, res: Response) => {
+app.get("/chat/health", (req: Request, res: Response) => {
   return res
     .status(200)
     .json({ success: true, message: "chat-service running successfully" });
